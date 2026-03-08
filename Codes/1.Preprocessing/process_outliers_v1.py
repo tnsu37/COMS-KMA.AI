@@ -482,36 +482,32 @@ def check_if_day_already_processed(kst_date, hourly_output_dir):
 def clean_gk2a_outliers_api(df):
     """[API 데이터용] (API 컬럼명 기준)"""
     logger.info("  → GK2A API 이상치 처리 중 (API 컬럼명 기준)...")
-    invalid_values = [99, -99, 999, -999, 65535]
+    invalid_values = [-99, 999, -999, 65535]
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     data_cols = [c for c in numeric_cols if '_dqf' not in c and '_flag' not in c and c not in ['geoId', 'geo_lon', 'geo_lat']]
     for col in data_cols:
         if col in df.columns: df[col] = df[col].replace(invalid_values, np.nan)
     
     # (AII, TQPROF, TPW, LST, FOG, DCOEW, CTPS, CLA, NCOT, SWRAD, SAL, LWRAD, APPS... 로직 100% 동일)
-    if 'aii_dqf1' in df.columns and 'aii_dqf2' in df.columns:
+    if 'aii_dqf1' in df.columns:
         aii_cols = ['aii_cape', 'aii_ki', 'aii_li', 'aii_si', 'aii_tti']
-        mask = (df['aii_dqf1'] != 0) | (df['aii_dqf2'] != 1)
+        mask = (df['aii_dqf1'] == 3)
         existing_aii_cols = [c for c in aii_cols if c in df.columns]
         df.loc[mask, existing_aii_cols] = np.nan
-    if 'tqprof_dqf1' in df.columns and 'tqprof_dqf2' in df.columns:
+    if 'tqprof_dqf1' in df.columns:
         tqprof_cols = ['tqprof_t', 'tqprof_q']
-        mask = (df['tqprof_dqf1'] != 0) | (df['tqprof_dqf2'] != 1)
+        mask = (df['tqprof_dqf1'] == 3)
         existing_tqprof_cols = [c for c in tqprof_cols if c in df.columns]
         df.loc[mask, existing_tqprof_cols] = np.nan
-    if 'tpw_dqf1' in df.columns and 'tpw_dqf2' in df.columns:
-        tpw_cols = ['tpw', 'tpw_low', 'tpw_mid', 'tpw_high']
-        mask = (df['tpw_dqf1'] != 0) | (df['tpw_dqf2'] != 1)
-        existing_tpw_cols = [c for c in tpw_cols if c in df.columns]
-        df.loc[mask, existing_tpw_cols] = np.nan
     if 'lst_dqf' in df.columns and 'lst' in df.columns:
         df.loc[df['lst_dqf'] != 0, 'lst'] = np.nan
     if 'fog_dqf' in df.columns and 'fog' in df.columns:
         df.loc[df['fog_dqf'] != 0, 'fog'] = np.nan
     if 'dcoew_dqf1' in df.columns:
         dcoew_cols = ['dcoew_thickness', 'dcoew_radius', 'dcoew_liquid_path']
+        mask = (df['dcoew_dqf1'] != 0) & (df['dcoew_dqf1'] != 6)
         existing_dcoew_cols = [c for c in dcoew_cols if c in df.columns]
-        df.loc[df['dcoew_dqf1'] != 0, existing_dcoew_cols] = np.nan
+        df.loc[mask, existing_dcoew_cols] = np.nan
     if 'ctps_dqf1' in df.columns:
         ctps_cols = ['ctps_cp', 'ctps_cth', 'ctps_ctp', 'ctps_ctt']
         existing_ctps_cols = [c for c in ctps_cols if c in df.columns]
@@ -522,20 +518,24 @@ def clean_gk2a_outliers_api(df):
         df.loc[df['cla_type_dqf'] != 0, 'cla_type'] = np.nan
     if 'ncot_dqf' in df.columns and 'ncot' in df.columns:
         df.loc[df['ncot_dqf'] != 0, 'ncot'] = np.nan
-    if 'swrad_dqf1' in df.columns: 
-        swrad_cols = ['swrad_absorbed', 'swrad_downward']
-        existing_swrad_cols = [c for c in swrad_cols if c in df.columns]
-        df.loc[df['swrad_dqf1'] != 1, existing_swrad_cols] = np.nan
+    if 'swrad_absorbed_dqf' in df.columns and 'swrad_dqf1' in df.columns: 
+        mask = (df['swrad_absorbed_dqf'] != 1) | (df['swrad_dqf1'] != 1)
+        df.loc[mask, 'swrad_absorbed'] = np.nan
+    if 'swrad_downward_dqf' in df.columns and 'swrad_dqf1' in df.columns: 
+        mask = (df['swrad_downward_dqf'] != 1) | (df['swrad_dqf1'] != 1)
+        df.loc[mask, 'swrad_downward'] = np.nan
     if 'sal_dqf1' in df.columns:
         sal_bsa_cols = [c for c in df.columns if c.startswith('sal_bsa')]
         df.loc[df['sal_dqf1'] != 1, sal_bsa_cols] = np.nan
     if 'sal_dqf2' in df.columns:
         sal_wsa_cols = [c for c in df.columns if c.startswith('sal_wsa')]
         df.loc[df['sal_dqf2'] != 1, sal_wsa_cols] = np.nan
-    if 'lwrad_dqf1' in df.columns: 
-        lwrad_cols = ['lwrad_downward', 'lwrad_upward']
-        existing_lwrad_cols = [c for c in lwrad_cols if c in df.columns]
-        df.loc[df['lwrad_dqf1'] != 1, existing_lwrad_cols] = np.nan
+    if 'lwrad_upward_dqf' in df.columns and 'lwrad_dqf1' in df.columns: 
+        mask = (df['lwrad_upward_dqf'] != 1) | (df['lwrad_dqf1'] != 1)
+        df.loc[mask, 'lwrad_upward'] = np.nan
+    if 'lwrad_downward_dqf' in df.columns and 'lwrad_dqf1' in df.columns: 
+        mask = (df['lwrad_downward_dqf'] != 1) | (df['lwrad_dqf1'] != 1)
+        df.loc[mask, 'lwrad_downward'] = np.nan
     if 'apps_aep_dqf' in df.columns and 'apps_aep' in df.columns:
         df.loc[df['apps_aep_dqf'] != 2, 'apps_aep'] = np.nan
     if 'apps_aod_dqf' in df.columns and 'apps_aod' in df.columns:
