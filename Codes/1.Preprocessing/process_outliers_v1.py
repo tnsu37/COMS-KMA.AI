@@ -604,7 +604,7 @@ def clean_odam_outliers_api(df):
             logger.debug(f"    - ODAM 경고: '{col}' 컬럼이 df에 없습니다.")
 
     # 3. (공통) 999 / -999 결측값 처리
-    invalid_values = [999, -999]
+    invalid_values = [999, -999, -99]
     for col in odam_cols:
          if col in df.columns:
             df[col] = df[col].replace(invalid_values, np.nan)
