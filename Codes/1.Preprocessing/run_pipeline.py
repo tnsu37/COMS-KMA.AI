@@ -28,7 +28,7 @@ def setup_logger():
 # p1and2는 process_outliers.py를 사용합니다.
 SCRIPT_MAP = {
     'p1': 'create_coordinate_mapping.py',
-    'p2': 'process_outliers.py',
+    'p2': 'process_outliers_v1.py',
     'p3_train': 'train_imputer.py',
     'p3_impute': 'impute_hourly.py',
     'p4': 'merge_data.py',
@@ -89,7 +89,7 @@ def main():
     logger.info("="*80)
 
     # 5. 최종 명령어 생성
-    base_cmd = ['python', script_to_run]
+    base_cmd = [sys.executable, script_to_run]
     
     # 'p1and2'는 특별히 --data-type GK2A_PAST 인자를 강제로 추가
     if args.process == 'p1and2':
