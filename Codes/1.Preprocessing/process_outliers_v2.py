@@ -3,7 +3,7 @@
 
 기능:
 - --data-type 옵션에 따라 "과거 데이터(.nc)"와 "API 데이터(.csv)"를 모두 처리합니다.
-
+<v1>
 [모드 1: GK2A_PAST]
 - 'process_direct_hourly.py'의 로직을 "그대로" 수행합니다.
 - 입력: 'sample' 폴더(.nc), 'matched_geoid.csv'
@@ -24,6 +24,14 @@
   1. "최종 API 컬럼명" 기준으로 이상치 처리를 수행합니다.
   2. (variable_mapping.py import 불필요)
 - 출력: 이상치 처리된 CSV 파일 1개
+
+<v2>
+[모드 2: GK2A_API, AIRKOREA_API, ODAM_API]
+- 입력: API CSV 파일 1개
+- 처리:
+  1. 결측값(-99. -999 등)을 지우고, missing율을 체크합니다.
+  2. quantile 상위 0.1, 하위 0.1%, 그리고 도메인 지식을 결합한 이상치를 처리 후, missing율을 체크합니다.
+- 출력: 이상치 처리된 CSV 파일 1개, 각 변수별 overall/hourly 누적 결측율 CSV 파일
 """
 
 import os
