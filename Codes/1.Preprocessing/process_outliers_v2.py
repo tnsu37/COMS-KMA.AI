@@ -44,6 +44,7 @@ import re
 from collections import defaultdict
 import warnings # [수정] warnings import 추가
 import glob
+from pathlib import Path
 
 # pandas 경고 무시
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
@@ -480,22 +481,106 @@ def check_if_day_already_processed(kst_date, hourly_output_dir):
 # ==============================================================================
 
 def check_missing(df, out):
-    hourly_missing = df.groupby('hour').apply(lambda x: x.isna().mean())
-    hourly_missing.to_csv(f'/Data/1.outliers_rm/logs/{out}_hourly.csv')
+    save_dir = Path('../../Data/1.outliers_rm/missing')
+    save_dir.mkdir(parents=True, exist_ok=True)
 
-    missing_ratio = df.isna().mean()
-    missing_df = pd.DataFrame({
-    'column': missing_ratio.index,
-    'missing_percent': missing_ratio.values * 100,
-    'high_missing': missing_ratio >= 0.3
+    overall_path = save_dir / f'{out}_overall.csv'
+    hourly_path = save_dir / f'{out}_hourly.csv'
+
+    exclude_cols = ['dateTime', 'hour', 'geoId', 'dateTime', 'year', 'month', 'day', 'st_lon', 'st_lat', 'geo_lon', 'geo_lat']
+    target_cols = [c for c in df.columns if c not in exclude_cols]
+
+    # 1) 전체 누적 결측
+    current_total_rows = len(df)
+    current_missing = df[target_cols].isna().sum()
+
+    overall_current = pd.DataFrame({
+        'column': current_missing.index,
+        'missing_count': current_missing.values
     })
-    missing_df.to_csv(f'/Data/1.outliers_rm/logs/{out}.csv', index=False)
+    overall_current['total_rows'] = current_total_rows
+
+    if overall_path.exists():
+        overall_prev = pd.read_csv(overall_path)
+
+        overall_merged = pd.merge(
+            overall_prev[['column', 'missing_count', 'total_rows']],
+            overall_current,
+            on='column',
+            how='outer',
+            suffixes=('_prev', '_curr')
+        ).fillna(0)
+
+        overall_merged['missing_count'] = (
+            overall_merged['missing_count_prev'] + overall_merged['missing_count_curr']
+        )
+        overall_merged['total_rows'] = (
+            overall_merged['total_rows_prev'] + overall_merged['total_rows_curr']
+        )
+
+        overall_result = overall_merged[['column', 'missing_count', 'total_rows']]
+    else:
+        overall_result = overall_current[['column', 'missing_count', 'total_rows']]
+
+    overall_result['missing_rate'] = overall_result['missing_count'] / overall_result['total_rows']
+    overall_result['missing_percent'] = overall_result['missing_rate'] * 100
+    overall_result.to_csv(overall_path, index=False)
+
+    # 2) 시간대별 누적 결측
+    # 각 hour별 행 수
+    hourly_total = df.groupby('hour').size().rename('total_rows').reset_index()
+
+    # 각 hour별 각 column의 결측 수
+    hourly_missing = (
+        df.groupby('hour')[target_cols]
+          .apply(lambda x: x.isna().sum())
+          .reset_index()
+    )
+
+    # wide -> long
+    hourly_missing_long = hourly_missing.melt(
+        id_vars='hour',
+        var_name='column',
+        value_name='missing_count'
+    )
+
+    # hour별 total_rows 붙이기
+    hourly_current = pd.merge(hourly_missing_long, hourly_total, on='hour', how='left')
+
+    if hourly_path.exists():
+        hourly_prev = pd.read_csv(hourly_path)
+
+        hourly_merged = pd.merge(
+            hourly_prev[['hour', 'column', 'missing_count', 'total_rows']],
+            hourly_current,
+            on=['hour', 'column'],
+            how='outer',
+            suffixes=('_prev', '_curr')
+        ).fillna(0)
+
+        hourly_merged['missing_count'] = (
+            hourly_merged['missing_count_prev'] + hourly_merged['missing_count_curr']
+        )
+        hourly_merged['total_rows'] = (
+            hourly_merged['total_rows_prev'] + hourly_merged['total_rows_curr']
+        )
+
+        hourly_result = hourly_merged[['hour', 'column', 'missing_count', 'total_rows']]
+    else:
+        hourly_result = hourly_current[['hour', 'column', 'missing_count', 'total_rows']]
+
+    hourly_result['missing_rate'] = hourly_result['missing_count'] / hourly_result['total_rows']
+    hourly_result['missing_percent'] = hourly_result['missing_rate'] * 100
+    hourly_result = hourly_result.sort_values(['column', 'hour']).reset_index(drop=True)
+
+    hourly_result.to_csv(hourly_path, index=False)
 
 def outliers_quantile(df, data_cols):
     for col in data_cols:
         lower = df[col].quantile(0.001)
         upper = df[col].quantile(0.999)
-        df = df[(df[col] >= lower) & (df[col] <= upper)]
+        mask = (df[col] < lower) | (df[col] > upper)
+        df.loc[mask, col] = np.nan
     return df
 
 def clean_gk2a_outliers_api(df):
