@@ -1,0 +1,1332 @@
+2026-03-15 00:51:07 | INFO     | ============================================================
+2026-03-15 00:51:07 | INFO     | [프로세스 2: GK2A_API] 시작
+2026-03-15 00:51:07 | INFO     |   - API 입력 폴더: ../../realtime_API/GK2A
+2026-03-15 00:51:07 | INFO     |   - API 출력 폴더: ../../Data/1.outliers_rm
+2026-03-15 00:51:07 | INFO     | ============================================================
+2026-03-15 00:51:07 | INFO     |   → 1030개 API CSV 파일 발견. 처리 시작...
+2026-03-15 00:51:07 | INFO     |   → 파일 로드 중: GK2A_2025-12-14_12.csv
+2026-03-15 00:51:08 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:08 | ERROR    | ❌ GK2A_2025-12-14_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:08 | INFO     |   → 파일 로드 중: GK2A_2025-12-14_13.csv
+2026-03-15 00:51:08 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:08 | ERROR    | ❌ GK2A_2025-12-14_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:08 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_02.csv
+2026-03-15 00:51:09 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:09 | ERROR    | ❌ GK2A_2025-12-15_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:09 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_03.csv
+2026-03-15 00:51:09 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:09 | ERROR    | ❌ GK2A_2025-12-15_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:09 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_04.csv
+2026-03-15 00:51:10 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:10 | ERROR    | ❌ GK2A_2025-12-15_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:10 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_05.csv
+2026-03-15 00:51:10 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:10 | ERROR    | ❌ GK2A_2025-12-15_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:10 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_06.csv
+2026-03-15 00:51:11 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:11 | ERROR    | ❌ GK2A_2025-12-15_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:11 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_07.csv
+2026-03-15 00:51:11 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:11 | ERROR    | ❌ GK2A_2025-12-15_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:11 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_08.csv
+2026-03-15 00:51:12 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:12 | ERROR    | ❌ GK2A_2025-12-15_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:12 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_09.csv
+2026-03-15 00:51:12 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:12 | ERROR    | ❌ GK2A_2025-12-15_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:12 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_10.csv
+2026-03-15 00:51:13 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:13 | ERROR    | ❌ GK2A_2025-12-15_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:13 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_11.csv
+2026-03-15 00:51:13 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:13 | ERROR    | ❌ GK2A_2025-12-15_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:13 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_12.csv
+2026-03-15 00:51:14 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:14 | ERROR    | ❌ GK2A_2025-12-15_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:14 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_13.csv
+2026-03-15 00:51:14 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:14 | ERROR    | ❌ GK2A_2025-12-15_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:14 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_14.csv
+2026-03-15 00:51:14 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:15 | ERROR    | ❌ GK2A_2025-12-15_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:15 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_15.csv
+2026-03-15 00:51:15 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:15 | ERROR    | ❌ GK2A_2025-12-15_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:15 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_16.csv
+2026-03-15 00:51:15 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:15 | ERROR    | ❌ GK2A_2025-12-15_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:15 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_17.csv
+2026-03-15 00:51:15 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:15 | ERROR    | ❌ GK2A_2025-12-15_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:15 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_18.csv
+2026-03-15 00:51:16 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:16 | ERROR    | ❌ GK2A_2025-12-15_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:16 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_19.csv
+2026-03-15 00:51:16 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:16 | ERROR    | ❌ GK2A_2025-12-15_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:16 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_20.csv
+2026-03-15 00:51:17 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:17 | ERROR    | ❌ GK2A_2025-12-15_20.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:17 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_21.csv
+2026-03-15 00:51:17 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:17 | ERROR    | ❌ GK2A_2025-12-15_21.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:17 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_22.csv
+2026-03-15 00:51:18 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:18 | ERROR    | ❌ GK2A_2025-12-15_22.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:18 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_23.csv
+2026-03-15 00:51:18 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:18 | ERROR    | ❌ GK2A_2025-12-15_23.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:18 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_00.csv
+2026-03-15 00:51:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:19 | ERROR    | ❌ GK2A_2025-12-16_00.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:19 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_01.csv
+2026-03-15 00:51:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:19 | ERROR    | ❌ GK2A_2025-12-16_01.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:19 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_02.csv
+2026-03-15 00:51:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:20 | ERROR    | ❌ GK2A_2025-12-16_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:20 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_03.csv
+2026-03-15 00:51:20 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:20 | ERROR    | ❌ GK2A_2025-12-16_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:20 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_04.csv
+2026-03-15 00:51:20 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:20 | ERROR    | ❌ GK2A_2025-12-16_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:20 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_05.csv
+2026-03-15 00:51:21 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:21 | ERROR    | ❌ GK2A_2025-12-16_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:21 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_06.csv
+2026-03-15 00:51:21 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:21 | ERROR    | ❌ GK2A_2025-12-16_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:21 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_07.csv
+2026-03-15 00:51:22 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:22 | ERROR    | ❌ GK2A_2025-12-16_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:22 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_08.csv
+2026-03-15 00:51:22 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:22 | ERROR    | ❌ GK2A_2025-12-16_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:22 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_09.csv
+2026-03-15 00:51:23 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:23 | ERROR    | ❌ GK2A_2025-12-16_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:23 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_10.csv
+2026-03-15 00:51:23 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:23 | ERROR    | ❌ GK2A_2025-12-16_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:23 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_11.csv
+2026-03-15 00:51:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:24 | ERROR    | ❌ GK2A_2025-12-16_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_12.csv
+2026-03-15 00:51:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:24 | ERROR    | ❌ GK2A_2025-12-16_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_13.csv
+2026-03-15 00:51:24 | ERROR    | ❌ GK2A_2025-12-16_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 847, in process_api_data
+    df = pd.read_csv(input_file, low_memory=False)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 306, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1947, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 219, in read
+    data = self._reader.read(nrows)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 814, in pandas._libs.parsers.TextReader.read
+  File "pandas/_libs/parsers.pyx", line 906, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 885, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "pandas/_libs/parsers.pyx", line 2084, in pandas._libs.parsers.raise_parser_error
+pandas.errors.ParserError: Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.
+2026-03-15 00:51:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_14.csv
+2026-03-15 00:51:25 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:25 | ERROR    | ❌ GK2A_2025-12-16_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:25 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_15.csv
+2026-03-15 00:51:25 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:25 | ERROR    | ❌ GK2A_2025-12-16_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:25 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_16.csv
+2026-03-15 00:51:25 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:25 | ERROR    | ❌ GK2A_2025-12-16_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:25 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_17.csv
+2026-03-15 00:51:26 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:26 | ERROR    | ❌ GK2A_2025-12-16_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:26 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_18.csv
+2026-03-15 00:51:26 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:51:26 | ERROR    | ❌ GK2A_2025-12-16_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:51:26 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_19.csv

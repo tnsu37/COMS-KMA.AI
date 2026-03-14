@@ -1,0 +1,1383 @@
+2026-03-15 00:48:18 | INFO     | ============================================================
+2026-03-15 00:48:18 | INFO     | [프로세스 2: GK2A_API] 시작
+2026-03-15 00:48:18 | INFO     |   - API 입력 폴더: ../../realtime_API/GK2A
+2026-03-15 00:48:18 | INFO     |   - API 출력 폴더: ../../Data/1.outliers_rm
+2026-03-15 00:48:18 | INFO     | ============================================================
+2026-03-15 00:48:18 | INFO     |   → 1030개 API CSV 파일 발견. 처리 시작...
+2026-03-15 00:48:18 | INFO     |   → 파일 로드 중: GK2A_2025-12-14_12.csv
+2026-03-15 00:48:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:19 | ERROR    | ❌ GK2A_2025-12-14_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:19 | INFO     |   → 파일 로드 중: GK2A_2025-12-14_13.csv
+2026-03-15 00:48:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:19 | ERROR    | ❌ GK2A_2025-12-14_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:19 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_02.csv
+2026-03-15 00:48:19 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:19 | ERROR    | ❌ GK2A_2025-12-15_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:19 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_03.csv
+2026-03-15 00:48:20 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:20 | ERROR    | ❌ GK2A_2025-12-15_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:20 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_04.csv
+2026-03-15 00:48:20 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:20 | ERROR    | ❌ GK2A_2025-12-15_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:20 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_05.csv
+2026-03-15 00:48:21 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:21 | ERROR    | ❌ GK2A_2025-12-15_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:21 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_06.csv
+2026-03-15 00:48:21 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:21 | ERROR    | ❌ GK2A_2025-12-15_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:21 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_07.csv
+2026-03-15 00:48:22 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:22 | ERROR    | ❌ GK2A_2025-12-15_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:22 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_08.csv
+2026-03-15 00:48:22 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:22 | ERROR    | ❌ GK2A_2025-12-15_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:22 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_09.csv
+2026-03-15 00:48:22 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:22 | ERROR    | ❌ GK2A_2025-12-15_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:22 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_10.csv
+2026-03-15 00:48:23 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:23 | ERROR    | ❌ GK2A_2025-12-15_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:23 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_11.csv
+2026-03-15 00:48:23 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:23 | ERROR    | ❌ GK2A_2025-12-15_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:23 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_12.csv
+2026-03-15 00:48:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:24 | ERROR    | ❌ GK2A_2025-12-15_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_13.csv
+2026-03-15 00:48:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:24 | ERROR    | ❌ GK2A_2025-12-15_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_14.csv
+2026-03-15 00:48:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:24 | ERROR    | ❌ GK2A_2025-12-15_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_15.csv
+2026-03-15 00:48:24 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:24 | ERROR    | ❌ GK2A_2025-12-15_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:48:24 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_16.csv
+2026-03-15 00:48:25 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:25 | ERROR    | ❌ GK2A_2025-12-15_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:25 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_17.csv
+2026-03-15 00:48:25 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:25 | ERROR    | ❌ GK2A_2025-12-15_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:25 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_18.csv
+2026-03-15 00:48:26 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:26 | ERROR    | ❌ GK2A_2025-12-15_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:26 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_19.csv
+2026-03-15 00:48:26 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:26 | ERROR    | ❌ GK2A_2025-12-15_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:26 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_20.csv
+2026-03-15 00:48:26 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:26 | ERROR    | ❌ GK2A_2025-12-15_20.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:26 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_21.csv
+2026-03-15 00:48:27 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:27 | ERROR    | ❌ GK2A_2025-12-15_21.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:27 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_22.csv
+2026-03-15 00:48:27 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:27 | ERROR    | ❌ GK2A_2025-12-15_22.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:27 | INFO     |   → 파일 로드 중: GK2A_2025-12-15_23.csv
+2026-03-15 00:48:28 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:28 | ERROR    | ❌ GK2A_2025-12-15_23.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:28 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_00.csv
+2026-03-15 00:48:28 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:28 | ERROR    | ❌ GK2A_2025-12-16_00.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:28 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_01.csv
+2026-03-15 00:48:28 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:28 | ERROR    | ❌ GK2A_2025-12-16_01.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:28 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_02.csv
+2026-03-15 00:48:29 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:29 | ERROR    | ❌ GK2A_2025-12-16_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:29 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_03.csv
+2026-03-15 00:48:29 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:29 | ERROR    | ❌ GK2A_2025-12-16_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:29 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_04.csv
+2026-03-15 00:48:30 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:30 | ERROR    | ❌ GK2A_2025-12-16_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:30 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_05.csv
+2026-03-15 00:48:30 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:30 | ERROR    | ❌ GK2A_2025-12-16_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:30 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_06.csv
+2026-03-15 00:48:30 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:30 | ERROR    | ❌ GK2A_2025-12-16_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:30 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_07.csv
+2026-03-15 00:48:31 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:31 | ERROR    | ❌ GK2A_2025-12-16_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:31 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_08.csv
+2026-03-15 00:48:31 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:31 | ERROR    | ❌ GK2A_2025-12-16_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:31 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_09.csv
+2026-03-15 00:48:32 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:32 | ERROR    | ❌ GK2A_2025-12-16_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:32 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_10.csv
+2026-03-15 00:48:32 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:32 | ERROR    | ❌ GK2A_2025-12-16_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:32 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_11.csv
+2026-03-15 00:48:32 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:32 | ERROR    | ❌ GK2A_2025-12-16_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:32 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_12.csv
+2026-03-15 00:48:33 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:33 | ERROR    | ❌ GK2A_2025-12-16_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:33 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_13.csv
+2026-03-15 00:48:33 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:33 | ERROR    | ❌ GK2A_2025-12-16_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:33 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_14.csv
+2026-03-15 00:48:34 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:34 | ERROR    | ❌ GK2A_2025-12-16_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:34 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_15.csv
+2026-03-15 00:48:34 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:34 | ERROR    | ❌ GK2A_2025-12-16_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:48:34 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_16.csv
+2026-03-15 00:48:34 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:34 | ERROR    | ❌ GK2A_2025-12-16_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:34 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_17.csv
+2026-03-15 00:48:34 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:34 | ERROR    | ❌ GK2A_2025-12-16_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:34 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_18.csv
+2026-03-15 00:48:35 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:35 | ERROR    | ❌ GK2A_2025-12-16_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:35 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_19.csv
+2026-03-15 00:48:35 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:35 | ERROR    | ❌ GK2A_2025-12-16_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:35 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_20.csv
+2026-03-15 00:48:36 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:36 | ERROR    | ❌ GK2A_2025-12-16_20.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:36 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_21.csv
+2026-03-15 00:48:36 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:36 | ERROR    | ❌ GK2A_2025-12-16_21.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:36 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_22.csv
+2026-03-15 00:48:36 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:36 | ERROR    | ❌ GK2A_2025-12-16_22.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:36 | INFO     |   → 파일 로드 중: GK2A_2025-12-16_23.csv
+2026-03-15 00:48:37 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:37 | ERROR    | ❌ GK2A_2025-12-16_23.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:37 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_00.csv
+2026-03-15 00:48:37 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:37 | ERROR    | ❌ GK2A_2025-12-17_00.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:37 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_01.csv
+2026-03-15 00:48:38 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:38 | ERROR    | ❌ GK2A_2025-12-17_01.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:38 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_02.csv
+2026-03-15 00:48:38 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:38 | ERROR    | ❌ GK2A_2025-12-17_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:38 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_03.csv
+2026-03-15 00:48:38 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:38 | ERROR    | ❌ GK2A_2025-12-17_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:38 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_04.csv
+2026-03-15 00:48:39 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:39 | ERROR    | ❌ GK2A_2025-12-17_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:39 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_05.csv
+2026-03-15 00:48:39 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:39 | ERROR    | ❌ GK2A_2025-12-17_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:39 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_06.csv
+2026-03-15 00:48:39 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:39 | ERROR    | ❌ GK2A_2025-12-17_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:39 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_07.csv
+2026-03-15 00:48:40 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:40 | ERROR    | ❌ GK2A_2025-12-17_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:40 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_08.csv
+2026-03-15 00:48:40 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:40 | ERROR    | ❌ GK2A_2025-12-17_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:40 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_09.csv
+2026-03-15 00:48:41 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:41 | ERROR    | ❌ GK2A_2025-12-17_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:41 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_10.csv
+2026-03-15 00:48:41 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:41 | ERROR    | ❌ GK2A_2025-12-17_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:41 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_11.csv
+2026-03-15 00:48:41 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:41 | ERROR    | ❌ GK2A_2025-12-17_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:41 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_12.csv
+2026-03-15 00:48:42 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:42 | ERROR    | ❌ GK2A_2025-12-17_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:42 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_13.csv
+2026-03-15 00:48:42 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:42 | ERROR    | ❌ GK2A_2025-12-17_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:42 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_14.csv
+2026-03-15 00:48:43 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:43 | ERROR    | ❌ GK2A_2025-12-17_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:43 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_15.csv
+2026-03-15 00:48:43 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:43 | ERROR    | ❌ GK2A_2025-12-17_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:48:43 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_16.csv
+2026-03-15 00:48:43 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:43 | ERROR    | ❌ GK2A_2025-12-17_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:43 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_17.csv
+2026-03-15 00:48:43 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:43 | ERROR    | ❌ GK2A_2025-12-17_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:43 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_18.csv
+2026-03-15 00:48:44 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:44 | ERROR    | ❌ GK2A_2025-12-17_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:44 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_19.csv
+2026-03-15 00:48:44 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:44 | ERROR    | ❌ GK2A_2025-12-17_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:44 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_20.csv
+2026-03-15 00:48:45 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:45 | ERROR    | ❌ GK2A_2025-12-17_20.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:45 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_21.csv
+2026-03-15 00:48:45 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:45 | ERROR    | ❌ GK2A_2025-12-17_21.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:45 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_22.csv
+2026-03-15 00:48:45 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:45 | ERROR    | ❌ GK2A_2025-12-17_22.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:45 | INFO     |   → 파일 로드 중: GK2A_2025-12-17_23.csv
+2026-03-15 00:48:46 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:46 | ERROR    | ❌ GK2A_2025-12-17_23.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:46 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_00.csv
+2026-03-15 00:48:46 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:46 | ERROR    | ❌ GK2A_2025-12-18_00.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:46 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_01.csv
+2026-03-15 00:48:47 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:47 | ERROR    | ❌ GK2A_2025-12-18_01.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:47 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_02.csv
+2026-03-15 00:48:47 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:47 | ERROR    | ❌ GK2A_2025-12-18_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:47 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_03.csv
+2026-03-15 00:48:47 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:47 | ERROR    | ❌ GK2A_2025-12-18_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:47 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_04.csv
+2026-03-15 00:48:48 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:48 | ERROR    | ❌ GK2A_2025-12-18_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:48 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_05.csv
+2026-03-15 00:48:48 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:48 | ERROR    | ❌ GK2A_2025-12-18_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:48 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_06.csv
+2026-03-15 00:48:48 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:48 | ERROR    | ❌ GK2A_2025-12-18_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:48 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_07.csv
+2026-03-15 00:48:49 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:49 | ERROR    | ❌ GK2A_2025-12-18_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:49 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_08.csv
+2026-03-15 00:48:49 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:49 | ERROR    | ❌ GK2A_2025-12-18_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:49 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_09.csv
+2026-03-15 00:48:50 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:50 | ERROR    | ❌ GK2A_2025-12-18_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:50 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_10.csv
+2026-03-15 00:48:50 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:50 | ERROR    | ❌ GK2A_2025-12-18_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:50 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_11.csv
+2026-03-15 00:48:50 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:50 | ERROR    | ❌ GK2A_2025-12-18_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:50 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_12.csv
+2026-03-15 00:48:51 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:51 | ERROR    | ❌ GK2A_2025-12-18_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:51 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_13.csv
+2026-03-15 00:48:51 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:51 | ERROR    | ❌ GK2A_2025-12-18_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:51 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_14.csv
+2026-03-15 00:48:52 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:52 | ERROR    | ❌ GK2A_2025-12-18_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:52 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_15.csv
+2026-03-15 00:48:52 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:52 | ERROR    | ❌ GK2A_2025-12-18_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:48:52 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_16.csv
+2026-03-15 00:48:52 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:52 | ERROR    | ❌ GK2A_2025-12-18_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:52 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_17.csv
+2026-03-15 00:48:53 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:53 | ERROR    | ❌ GK2A_2025-12-18_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:53 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_18.csv
+2026-03-15 00:48:53 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:53 | ERROR    | ❌ GK2A_2025-12-18_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:53 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_19.csv
+2026-03-15 00:48:53 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:53 | ERROR    | ❌ GK2A_2025-12-18_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:53 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_20.csv
+2026-03-15 00:48:54 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:54 | ERROR    | ❌ GK2A_2025-12-18_20.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:54 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_21.csv
+2026-03-15 00:48:54 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:54 | ERROR    | ❌ GK2A_2025-12-18_21.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:54 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_22.csv
+2026-03-15 00:48:55 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:55 | ERROR    | ❌ GK2A_2025-12-18_22.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:55 | INFO     |   → 파일 로드 중: GK2A_2025-12-18_23.csv
+2026-03-15 00:48:55 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:55 | ERROR    | ❌ GK2A_2025-12-18_23.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:55 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_00.csv
+2026-03-15 00:48:55 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:55 | ERROR    | ❌ GK2A_2025-12-19_00.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:55 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_01.csv
+2026-03-15 00:48:56 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:56 | ERROR    | ❌ GK2A_2025-12-19_01.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:56 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_02.csv
+2026-03-15 00:48:56 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:56 | ERROR    | ❌ GK2A_2025-12-19_02.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:56 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_03.csv
+2026-03-15 00:48:57 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:57 | ERROR    | ❌ GK2A_2025-12-19_03.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:57 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_04.csv
+2026-03-15 00:48:57 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:57 | ERROR    | ❌ GK2A_2025-12-19_04.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:57 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_05.csv
+2026-03-15 00:48:57 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:57 | ERROR    | ❌ GK2A_2025-12-19_05.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:57 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_06.csv
+2026-03-15 00:48:58 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:58 | ERROR    | ❌ GK2A_2025-12-19_06.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:58 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_07.csv
+2026-03-15 00:48:58 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:58 | ERROR    | ❌ GK2A_2025-12-19_07.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:58 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_08.csv
+2026-03-15 00:48:59 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:59 | ERROR    | ❌ GK2A_2025-12-19_08.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:59 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_09.csv
+2026-03-15 00:48:59 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:59 | ERROR    | ❌ GK2A_2025-12-19_09.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:59 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_10.csv
+2026-03-15 00:48:59 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:48:59 | ERROR    | ❌ GK2A_2025-12-19_10.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:48:59 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_11.csv
+2026-03-15 00:49:00 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:00 | ERROR    | ❌ GK2A_2025-12-19_11.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:00 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_12.csv
+2026-03-15 00:49:00 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:00 | ERROR    | ❌ GK2A_2025-12-19_12.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:00 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_13.csv
+2026-03-15 00:49:01 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:01 | ERROR    | ❌ GK2A_2025-12-19_13.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:01 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_14.csv
+2026-03-15 00:49:01 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:01 | ERROR    | ❌ GK2A_2025-12-19_14.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:01 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_15.csv
+2026-03-15 00:49:01 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:01 | ERROR    | ❌ GK2A_2025-12-19_15.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'docew_thickness'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 671, in clean_gk2a_outliers_api
+    df = outliers_quantile(df, con_cols)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 588, in outliers_quantile
+    lower = df[col].quantile(0.001)
+            ~~^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'docew_thickness'
+2026-03-15 00:49:01 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_16.csv
+2026-03-15 00:49:02 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:02 | ERROR    | ❌ GK2A_2025-12-19_16.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:02 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_17.csv
+2026-03-15 00:49:02 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:02 | ERROR    | ❌ GK2A_2025-12-19_17.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:02 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_18.csv
+2026-03-15 00:49:02 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:02 | ERROR    | ❌ GK2A_2025-12-19_18.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:02 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_19.csv
+2026-03-15 00:49:03 | INFO     |   → GK2A API 이상치 처리 중 (API 컬럼명 기준)...
+2026-03-15 00:49:03 | ERROR    | ❌ GK2A_2025-12-19_19.csv 처리 중 치명적인 오류 발생
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 874, in process_api_data
+    cleaned_df = clean_gk2a_outliers_api(df)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\process_outliers_v3.py", line 665, in clean_gk2a_outliers_api
+    if rule['type'] == 'cat': df.loc[~df[col].isin['values'], col] = np.nan #범주형
+                                      ~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'method' object is not subscriptable
+2026-03-15 00:49:03 | INFO     |   → 파일 로드 중: GK2A_2025-12-19_20.csv

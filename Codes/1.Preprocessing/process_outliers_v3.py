@@ -3,7 +3,7 @@
 
 기능:
 - --data-type 옵션에 따라 "과거 데이터(.nc)"와 "API 데이터(.csv)"를 모두 처리합니다.
-
+<v1, v2>
 [모드 1: GK2A_PAST]
 - 'process_direct_hourly.py'의 로직을 "그대로" 수행합니다.
 - 입력: 'sample' 폴더(.nc), 'matched_geoid.csv'
@@ -24,6 +24,14 @@
   1. "최종 API 컬럼명" 기준으로 이상치 처리를 수행합니다.
   2. (variable_mapping.py import 불필요)
 - 출력: 이상치 처리된 CSV 파일 1개
+
+<v3>
+[모드 2: GK2A_API, AIRKOREA_API, ODAM_API]
+- 입력: API CSV 파일 1개
+- 처리:
+  1. 결측값(-99. -999 등)을 지우고, missing율을 체크합니다.
+  2. quantile 상위 0.1, 하위 0.1%, 그리고 도메인 지식을 결합한 이상치를 처리 후, missing율을 체크합니다.
+- 출력: 이상치 처리된 CSV 파일 1개, 각 변수별 overall/hourly 누적 결측율 CSV 파일
 """
 
 import os
@@ -44,6 +52,7 @@ import re
 from collections import defaultdict
 import warnings # [수정] warnings import 추가
 import glob
+from pathlib import Path
 
 # pandas 경고 무시
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
@@ -479,81 +488,127 @@ def check_if_day_already_processed(kst_date, hourly_output_dir):
 # [모드 2] API (.csv) 처리 로직
 # ==============================================================================
 
+def check_missing(df, out):
+    save_dir = Path('../../Data/1.outliers_rm/missing')
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    timewise_path = save_dir / f'{out}.csv'
+
+    exclude_cols = ['dateTime', 'hour', 'geoId', 'dateTime', 'year', 'month', 'day', 'st_lon', 'st_lat', 'geo_lon', 'geo_lat']
+    target_cols = [c for c in df.columns if c not in exclude_cols]
+
+    current_result = (
+        df.groupby('dateTime')[target_cols]
+          .apply(lambda x: x.isna().mean() * 100)
+          .reset_index()
+    )
+
+    if timewise_path.exists():
+        prev_result = pd.read_csv(timewise_path)
+        prev_result['dateTime'] = pd.to_datetime(prev_result['dateTime'])
+
+        merged_result = pd.concat([prev_result, current_result], ignore_index=True)
+
+        merged_result = (
+            merged_result
+            .drop_duplicates(subset='dateTime', keep='last')
+            .sort_values('dateTime')
+            .reset_index(drop=True)
+        )
+    else:
+        merged_result = current_result.sort_values('dateTime').reset_index(drop=True)
+    merged_result.to_csv(timewise_path, index=False, encoding='utf-8-sig')
+
+def outliers_quantile(df, data_cols):
+    for col in data_cols:
+        lower = df[col].quantile(0.001)
+        upper = df[col].quantile(0.999)
+        mask = (df[col] < lower) | (df[col] > upper)
+        df.loc[mask, col] = np.nan
+    return df
+
 def clean_gk2a_outliers_api(df):
     """[API 데이터용] (API 컬럼명 기준)"""
     logger.info("  → GK2A API 이상치 처리 중 (API 컬럼명 기준)...")
-    invalid_values = [-99, 999, -999, 65535]
+    invalid_values = [-99, -999, 65535]
     numeric_cols = df.select_dtypes(include=[np.number]).columns
-    data_cols = [c for c in numeric_cols if '_dqf' not in c and '_flag' not in c and c not in ['geoId', 'geo_lon', 'geo_lat']]
+    data_cols = [c for c in numeric_cols if '_dqf' not in c and '_flag' not in c and c not in ['geoId', 'geo_lon', 'geo_lat', 'st_lon','st_lat', 'dateTime']]
+
+    df.rename(columns={'apps_daod011': 'apps_daod11'}, inplace=True)
+
+    valid_range = {
+        'cld': {'type': 'cat', 'values': [0,1,2]},
+        'ctps_cp': {'type': 'cat', 'values': [0,1,2,6]},
+        'ctps_cth': {'type': 'con', 'values': [0,1700]},
+        'ctps_ctp': {'type': 'con', 'values': [0,120000]},
+        'ctps_ctt': {'type': 'con', 'values': [0,35000]},
+        'cla_type': {'type': 'cat', 'values': [1,2,3,4,5,6,7,8,9]},
+        'cla_cloud_fraction': {'type': 'con', 'values': [0,100]},
+        'dcoew_radius': {'type': 'con', 'values': [2,90]},
+        'dcoew_thickness': {'type': 'con', 'values': [1,160]},
+        'dcoew_liquid_path': {'type': 'con', 'values': [25,1000]},
+        #'ncot': {'type': 'con', 'values': []},
+        #'ci_ci1': {'type': '', 'values': []},
+        'ci_ci1_ccm': {'type': 'cat', 'values': [0,1,2,3,4]},
+        #'ci_ci1_obj': {'type': '', 'values': []},
+        'ci_ci1_prob': {'type': 'cat', 'values': [0,1,2,3,4]},
+        #'ci_ci2': {'type': '', 'values': []},
+        #'ci_ci2_obj': {'type': '', 'values': []},
+        'fog': {'type': 'cat', 'values': [1,2,3,4,5,6,7]},
+        'rr': {'type': 'con', 'values': [0,100]},
+        'qpn_rate': {'type': 'con', 'values': [0,300]},
+        'qpn_probability': {'type': 'con', 'values': [0,100]},
+        'tqprof_q': {'type': 'con', 'values': [0,100]},
+        'tqprof_t': {'type': 'con', 'values': [180,320]},
+        #'tpw_low': {'type': '', 'values': []},
+        #'tpw_mid': {'type': '', 'values': []},
+        #'tpw_high': {'type': '', 'values': []},
+        #'tpw': {'type': '', 'values': []},
+        'aii_cape': {'type': 'con', 'values': [0,5000]},
+        'aii_ki': {'type': 'con', 'values': [0,40]},
+        #'aii_li': {'type': '', 'values': []},
+        #'aii_si': {'type': '', 'values': []},
+        #'aii_tti': {'type': '', 'values': []},
+        'apps_aep': {'type': 'con', 'values': [-0.5,3]},
+        'apps_aod': {'type': 'con', 'values': [0,5]},
+        'apps_daod055': {'type': 'con', 'values': [0,5]},
+        'apps_daod11': {'type': 'con', 'values': [0,5]},
+        'lst': {'type': 'con', 'values': [213,330]},
+        'sal_bsa': {'type': 'con', 'values': [0,10000]},
+        'sal_bsa_b01': {'type': 'con', 'values': [0,10000]},
+        'sal_bsa_b02': {'type': 'con', 'values': [0,10000]},
+        'sal_bsa_b03': {'type': 'con', 'values': [0,10000]},
+        'sal_bsa_b04': {'type': 'con', 'values': [0,10000]},
+        'sal_bsa_b06': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa_b01': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa_b02': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa_b03': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa_b04': {'type': 'con', 'values': [0,10000]},
+        'sal_wsa_b06': {'type': 'con', 'values': [0,10000]},
+        'vgt_ndvi': {'type': 'con', 'values': [0,1]},
+        'vgt_evi': {'type': 'con', 'values': [0,1]}
+        #'swrad_downward': {'type': '', 'values': []},
+        #'swrad_absorbed': {'type': '', 'values': []},
+        #'lwrad_downward': {'type': '', 'values': []},
+        #'lwrad_upward': {'type': '', 'values': []}
+    }
+
     for col in data_cols:
-        if col in df.columns: df[col] = df[col].replace(invalid_values, np.nan)
-    
-    # (AII, TQPROF, TPW, LST, FOG, DCOEW, CTPS, CLA, NCOT, SWRAD, SAL, LWRAD, APPS... 로직 100% 동일)
-    if 'aii_dqf1' in df.columns:
-        aii_cols = ['aii_cape', 'aii_ki', 'aii_li', 'aii_si', 'aii_tti']
-        mask = (df['aii_dqf1'] == 3)
-        existing_aii_cols = [c for c in aii_cols if c in df.columns]
-        df.loc[mask, existing_aii_cols] = np.nan
-    if 'tqprof_dqf1' in df.columns:
-        tqprof_cols = ['tqprof_t', 'tqprof_q']
-        mask = (df['tqprof_dqf1'] == 3)
-        existing_tqprof_cols = [c for c in tqprof_cols if c in df.columns]
-        df.loc[mask, existing_tqprof_cols] = np.nan
-    if 'lst_dqf' in df.columns and 'lst' in df.columns:
-        df.loc[df['lst_dqf'] != 0, 'lst'] = np.nan
-    if 'fog_dqf' in df.columns and 'fog' in df.columns:
-        df.loc[df['fog_dqf'] != 0, 'fog'] = np.nan
-    if 'dcoew_dqf1' in df.columns:
-        dcoew_cols = ['dcoew_thickness', 'dcoew_radius', 'dcoew_liquid_path']
-        mask = (df['dcoew_dqf1'] != 0) & (df['dcoew_dqf1'] != 6)
-        existing_dcoew_cols = [c for c in dcoew_cols if c in df.columns]
-        df.loc[mask, existing_dcoew_cols] = np.nan
-    if 'ctps_dqf1' in df.columns:
-        ctps_cols = ['ctps_cp', 'ctps_cth', 'ctps_ctp', 'ctps_ctt']
-        existing_ctps_cols = [c for c in ctps_cols if c in df.columns]
-        df.loc[df['ctps_dqf1'] != 0, existing_ctps_cols] = np.nan
-    if 'cla_cloud_fraction_dqf' in df.columns and 'cla_cloud_fraction' in df.columns:
-        df.loc[df['cla_cloud_fraction_dqf'] != 0, 'cla_cloud_fraction'] = np.nan
-    if 'cla_type_dqf' in df.columns and 'cla_type' in df.columns:
-        df.loc[df['cla_type_dqf'] != 0, 'cla_type'] = np.nan
-    if 'ncot_dqf' in df.columns and 'ncot' in df.columns:
-        df.loc[df['ncot_dqf'] != 0, 'ncot'] = np.nan
-    if 'swrad_absorbed_dqf' in df.columns and 'swrad_dqf1' in df.columns: 
-        mask = (df['swrad_absorbed_dqf'] != 1) | (df['swrad_dqf1'] != 1)
-        df.loc[mask, 'swrad_absorbed'] = np.nan
-    if 'swrad_downward_dqf' in df.columns and 'swrad_dqf1' in df.columns: 
-        mask = (df['swrad_downward_dqf'] != 1) | (df['swrad_dqf1'] != 1)
-        df.loc[mask, 'swrad_downward'] = np.nan
-    if 'sal_dqf1' in df.columns:
-        sal_bsa_cols = [c for c in df.columns if c.startswith('sal_bsa')]
-        df.loc[df['sal_dqf1'] != 1, sal_bsa_cols] = np.nan
-    if 'sal_dqf2' in df.columns:
-        sal_wsa_cols = [c for c in df.columns if c.startswith('sal_wsa')]
-        df.loc[df['sal_dqf2'] != 1, sal_wsa_cols] = np.nan
-    if 'lwrad_upward_dqf' in df.columns and 'lwrad_dqf1' in df.columns: 
-        mask = (df['lwrad_upward_dqf'] != 1) | (df['lwrad_dqf1'] != 1)
-        df.loc[mask, 'lwrad_upward'] = np.nan
-    if 'lwrad_downward_dqf' in df.columns and 'lwrad_dqf1' in df.columns: 
-        mask = (df['lwrad_downward_dqf'] != 1) | (df['lwrad_dqf1'] != 1)
-        df.loc[mask, 'lwrad_downward'] = np.nan
-    if 'apps_aep_dqf' in df.columns and 'apps_aep' in df.columns:
-        df.loc[df['apps_aep_dqf'] != 2, 'apps_aep'] = np.nan
-    if 'apps_aod_dqf' in df.columns and 'apps_aod' in df.columns:
-        df.loc[df['apps_aod_dqf'] != 2, 'apps_aod'] = np.nan
-    if 'apps_daod055_dqf' in df.columns and 'apps_daod055' in df.columns:
-        df.loc[df['apps_daod055_dqf'] != 2, 'apps_daod055'] = np.nan
-    if 'apps_daod11_dqf' in df.columns and 'apps_daod11' in df.columns:
-        df.loc[df['apps_daod11_dqf'] != 2, 'apps_daod11'] = np.nan
-    if 'vgt_dqf1' in df.columns:
-        dqf_values = df['vgt_dqf1'].fillna(0).astype(int).values
-        bit_7 = (dqf_values >> 7) & 1; bit_2 = (dqf_values >> 2) & 1
-        bit_3 = (dqf_values >> 3) & 1; bit_4 = (dqf_values >> 4) & 1
-        invalid_mask = (bit_7 != 0) | (bit_2 != 0)
-        vgt_cols = ['vgt_ndvi', 'vgt_evi']
-        existing_vgt_cols = [c for c in vgt_cols if c in df.columns]
-        df.loc[invalid_mask, existing_vgt_cols] = np.nan
-        if 'vgt_ndvi' in df.columns: df.loc[bit_3 != 0, 'vgt_ndvi'] = np.nan
-        if 'vgt_evi' in df.columns: df.loc[bit_4 != 0, 'vgt_evi'] = np.nan
+        if col not in df.columns: 
+            continue
+        df[col] = df[col].replace(invalid_values, np.nan)
+        if col in valid_range:
+            rule = valid_range[col]
+            if rule['type'] == 'cat': df.loc[~df[col].isin(rule['values']), col] = np.nan #범주형
+            elif rule['type'] == 'con': df.loc[(df[col] < rule['values'][0]) | (df[col] > rule['values'][1]), col] = np.nan #연속형
+
+    check_missing(df, 'missing_gk2a_raw')
+
+    con_cols = [k for k, v in valid_range.items() if v['type'] == 'con']
+    df = outliers_quantile(df, con_cols)
+
+    check_missing(df, 'missing_gk2a_outliers_rm') 
             
     logger.info("  → GK2A API 이상치 처리 완료.")
     return df
@@ -563,6 +618,7 @@ def clean_airkorea_outliers_api(df):
     
     # (10/29 톡 + 노션 2.2 로직)
     # 1. 0 이하의 값을 NA로 대체
+    check_missing(df, 'missing_airkorea_raw')
     value_cols = ['so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value']
     for col in value_cols:
         if col in df.columns:
@@ -582,6 +638,8 @@ def clean_airkorea_outliers_api(df):
             flag_values = df[flag_col].fillna('0').astype(str)
             bad_flag_mask = (flag_values != '0')
             df.loc[bad_flag_mask, value_col] = np.nan
+
+    check_missing(df, 'missing_airkorea_outliers_rm')
             
     logger.info("  → AIRKOREA 이상치 처리 완료.")
     return df
@@ -609,6 +667,8 @@ def clean_odam_outliers_api(df):
          if col in df.columns:
             df[col] = df[col].replace(invalid_values, np.nan)
 
+    check_missing(df, 'missing_odam_raw')
+
     # 4. 개별 변수 규칙 적용 (컬럼명 모두 소문자로 수정)
 
     # T1H (기온): -40 ~ 60 C 범위 마스킹
@@ -623,7 +683,7 @@ def clean_odam_outliers_api(df):
     # UUU, VVV (풍속 U/V): -99/99, -53.03 삭제
     for col in ['uuu', 'vvv']:
         if col in df.columns:
-            df[col] = df[col].replace([-99, 99, -53.03], np.nan)
+            df[col] = df[col].replace([-99, -53.03], np.nan)
 
     # WSD (풍속): 0, 99 삭제
     if 'wsd' in df.columns:
@@ -633,6 +693,10 @@ def clean_odam_outliers_api(df):
     if 'pty' in df.columns:
         # PTY는 0~7 사이의 정수 코드값으로 가정
         df.loc[(df['pty'] < 0) | (df['pty'] > 7), 'pty'] = np.nan
+
+    df = outliers_quantile(df, odam_cols)
+
+    check_missing(df, 'missing_odam_outliers_rm')
 
     logger.info("  → ODAM API 이상치 처리 완료.")
     return df
@@ -739,6 +803,12 @@ def process_api_data(input_dir, output_dir, data_type, resume, force):
             if 'dateTime' not in df.columns or 'geoId' not in df.columns:
                 logger.warning(f"    - ⚠️ '{os.path.basename(input_file)}'에 'dateTime' 또는 'geoId' 컬럼이 없어 건너뜁니다.")
                 pbar.update(1); continue
+            
+            df['dateTime'] = pd.to_datetime(df['dateTime'])
+            df['year'] = df['dateTime'].dt.year
+            df['month'] = df['dateTime'].dt.month
+            df['day'] = df['dateTime'].dt.day
+            df['hour'] = df['dateTime'].dt.hour
 
             # 3. 데이터 타입에 따라 분기
             if data_type == 'GK2A_API':
