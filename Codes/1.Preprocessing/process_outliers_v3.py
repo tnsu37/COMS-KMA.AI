@@ -593,7 +593,7 @@ def clean_gk2a_outliers_api(df):
         #'lwrad_downward': {'type': '', 'values': []},
         #'lwrad_upward': {'type': '', 'values': []}
     }
-
+    
     for col in data_cols:
         if col not in df.columns: 
             continue
