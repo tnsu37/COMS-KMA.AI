@@ -1,13 +1,17 @@
-import pandas as pd
-import numpy as np
-import joblib
-import argparse
 import os
 import glob
+import joblib
+import argparse
 import logging
-from sklearn.experimental import enable_iterative_imputer # IterativeImputer를 사용하기 위해 필요
-from sklearn.impute import IterativeImputer
+import warnings
+import numpy as np
+import pandas as pd
+
+from datetime import timedelta
+from missingpy import MissForest
 from datetime import datetime, timedelta
+
+warnings.filterwarnings("ignore")
 
 # 로깅 설정 (process_outliers.py와 동일)
 def setup_logger(name):
@@ -22,45 +26,128 @@ def setup_logger(name):
 
 logger = setup_logger('TrainImputer')
 
+# 특정 케이스 고정값(평균)
+FIXED_MEANS = {
+    "ctps_cth": 4.179584097665568,
+    "ctps_ctp": 614.7220684323216,
+    "ctps_ctt": 254.53789325394524,
+    "dcoew_radius": 20.571707302585317,
+    "dcoew_thickness": 13.293504015554864,
+    "dcoew_liquid_path": 94.42700552605407,
+    "ncot": 5.019284345219368,
+}
+
+# GK2A의 연속형/범주형 변수 구분
+continuous_cols = [
+    'ctps_cth', 'ctps_ctp', 'ctps_ctt', 'cla_cloud_fraction',
+    'dcoew_radius', 'dcoew_thickness', 'dcoew_liquid_path', 'ncot',
+    'ci_ci2', 'rr', 'qpn_rate', 'tpw_low', 'tpw_mid',
+    'tpw_high', 'tpw', 'aii_tti', 'swrad_downward', 'swrad_absorbed',
+    'rr_raining_ct_flag', 'st_lon', 'st_lat'          
+                   ]
+categorical_cols = [
+    'cld', 'ctps_cp', 'cla_type', 'ci_ci1_ccm', 'ctps_dqf1',
+    'cla_type_dqf', 'cla_cloud_fraction_dqf', 'dcoew_dqf1', 'ncot_dqf',
+    'qpn_dqf1', 'tpw_dqf1', 'tpw_dqf2', 'aii_dqf1', 'aii_dqf2',
+    'swrad_downward_dqf', 'swrad_absorbed_dqf', 'swrad_dqf1'
+]
+
+def rule_based_imputation(df):
+    """GK2A의 특정 변수의 특성을 반영하여 룰 기반 보간을 우선 수행합니다"""
+
+    if "cla_type" in df.columns: df["cla_type"] = df["cla_type"].replace(255, 0)
+    if "ci_ci1_ccm" in df.columns: df["ci_ci1_ccm"] = df["ci_ci1_ccm"].replace(255, 9)
+
+    for col in ["swrad_downward", "swrad_absorbed"]:
+        if col in df.columns: df[col] = df[col].fillna(0)
+
+    has_cols_1 = all(c in df.columns for c in ["cld", "ctps_cp"])
+    has_cols_2 = all(c in df.columns for c in ["cld", "ctps_cp", "cla_type"])
+
+    # 1. [ctps_cth, ctps_ctp, ctps_ctt] = if (cld=2 & ctps_cp=0)
+    if has_cols_1:
+        cond = (df["cld"] == 2) & (df["ctps_cp"] == 0)
+        for col in ["ctps_cth", "ctps_ctp", "ctps_ctt"]:
+            if col in df.columns:
+                mask = cond & df[col].isna()
+                df.loc[mask, col] = FIXED_MEANS[col]
+
+    # 2. [dcoew_radius, docew_thickness] = if (cld=2 & ctps_cp=0) else if (cla_type=255)
+    if has_cols_2:
+        cond1 = (df["cld"] == 2) & (df["ctps_cp"] == 0)
+        cond2 = (df["cla_type"] == 0)
+
+        for col in ["dcoew_radius", "dcoew_thickness"]:
+            if col in df.columns:
+                mask1 = cond1 & df[col].isna()
+                df.loc[mask1, col] = FIXED_MEANS[col]
+                mask2 = (~cond1) & cond2 & df[col].isna()
+                df.loc[mask2, col] = FIXED_MEANS[col]
+
+    # 3. dcoew_liquid_path = if not (cld=0 & ctps_cp=1)
+    if has_cols_1 and "dcoew_liquid_path" in df.columns:
+        cond = ~((df["cld"] == 0) & (df["ctps_cp"] == 1))
+        mask = cond & df["dcoew_liquid_path"].isna()
+        df.loc[mask, "dcoew_liquid_path"] = FIXED_MEANS["dcoew_liquid_path"]
+
+    # 4. ncot = if (cld=2)
+    if "cld" in df.columns and "ncot" in df.columns:
+        cond = (df["cld"] == 2)
+        mask = cond & df["ncot"].isna()
+        df.loc[mask, "ncot"] = FIXED_MEANS["ncot"]
+
+    return df
+
 def clean_and_prepare_data(df, data_source):
-    """
-    DQF/Flag 컬럼을 제거하고, Imputation에 필요한 데이터만 준비합니다.
-    """
     if df.empty:
         logger.warning("입력 DataFrame이 비어 있습니다. 처리할 데이터가 없습니다.")
-        return None, None
-        
-    # --- [필수 요구사항] GK2A의 경우 'dqf' 또는 'flag'가 포함된 열은 모두 drop 시킵니다. ---
-    # ODAM은 DQF/Flag가 없으나, 안전하게 모든 데이터 소스에 대해 DQF/flag 제거 로직을 적용합니다.
+        return None, None, None
     
-    # 1. DQF/Flag 컬럼 제거
-    columns_to_drop = [col for col in df.columns if ('dqf' in col.lower() or 'flag' in col.lower())]
-    if columns_to_drop:
+    columns_to_drop = [
+        'ci_ci1', 'ci_ci1_obj', 'ci_ci1_prob', 'ci_ci2_obj', 'fog',
+        'qpn_probability', 'tqprof_q', 'tqprof_t', 'aii_cape', 'aii_ki',
+        'aii_li', 'aii_si', 'apps_aep', 'apps_aod', 'apps_daod055', 'apps_daod11',
+        'lst', 'sal_bsa', 'sal_bsa_b01', 'sal_bsa_b02', 'sal_bsa_b03', 'sal_bsa_b04',
+        'sal_bsa_b06', 'sal_wsa', 'sal_wsa_b01', 'sal_wsa_b02', 'sal_wsa_b03',
+        'sal_wsa_b04', 'sal_wsa_b06', 'vgt_ndvi', 'vgt_evi', 'lwrad_downward', 'lwrad_upward',
+        'apps_aep_dqf', 'apps_aod_dqf', 'apps_daod055_dqf', 'apps_daod11_dqf', 'apps_daod011_dqf',
+        'lst_dqf', 'lwrad_downward_dqf', 'lwrad_dqf1', 'lwrad_upward_dqf',
+        'sal_dqf1', 'sal_dqf2', 'tqprof_dqf1', 'tqprof_dqf2', 'vgt_dqf1', 'fog_dqf', 'id' 
+                       ]
+    if data_source == "GK2A":
         df_cleaned = df.drop(columns_to_drop, axis=1, errors='ignore')
-        logger.info(f"  → DQF/Flag 컬럼 {len(columns_to_drop)}개 제거 완료: {columns_to_drop}")
-    else:
-        df_cleaned = df.copy()
+        logger.info(f"  → GK2A - 보간 제외 대상 컬럼 {len(columns_to_drop)}개 제거 완료: {columns_to_drop}")
+
+        # 1. 규칙 기반 보간 수행
+        df_cleaned = rule_based_imputation(df_cleaned)
+        logger.info(f"  → 규칙 기반 보간 완료")
+
+    else: df_cleaned = df.copy()
 
     # 2. Imputation 대상에서 제외할 컬럼(Geo/Time ID) 분리
     id_cols = ['geoId', 'dateTime', 'geo_lon', 'geo_lat']
     cols_to_drop = [col for col in id_cols if col in df_cleaned.columns]
     data_df = df_cleaned.drop(cols_to_drop, axis=1, errors='ignore')
-    
+
     # 3. 모든 데이터 컬럼을 숫자형으로 변환 (Imputer 요구사항)
     for col in data_df.columns:
         if not pd.api.types.is_numeric_dtype(data_df[col]):
             data_df[col] = pd.to_numeric(data_df[col], errors='coerce')
     
-    # NaN만 남은 컬럼 제거 (IterativeImputer 오류 방지)
+    # 4. NaN만 남은 컬럼 제거 (오류 방지)
     data_df.dropna(axis=1, how='all', inplace=True)
+
+    # 5. cat_vars_idx
+    final_cols = data_df.columns.tolist()
+    cat_vars_idx = [final_cols.index(col) for col in categorical_cols if col in final_cols]
     
-    logger.info(f"  → 최종 Imputation 대상 컬럼 수: {len(data_df.columns)}")
+    logger.info(f"  → 최종 Imputation 대상 컬럼 수: {len(final_cols)}")
+    logger.info(f"  → 최종 Imputation 대상 행 수: {len(data_df)}")
     
     # DQF/Flag가 제거된 DataFrame에서 ID 컬럼만 추출
     id_df = df_cleaned[['geoId', 'dateTime']].copy()
     
-    return data_df, id_df
-
+    return data_df, id_df, cat_vars_idx
 
 
 def load_data_for_training(input_dir, data_source, start_date=None, end_date=None):
@@ -117,8 +204,28 @@ def load_data_for_training(input_dir, data_source, start_date=None, end_date=Non
     logger.info(f"  → 총 {len(combined_df)}개의 레코드 로드 및 병합 완료.")
     return combined_df
 
+
+def train_missforest(data_df, cat_vars_idx, random_state=42):
+    logger.info("  → MissForest 모델 훈련 시작...")
+
+    imputer = MissForest(
+        max_iter=10,
+        decreasing=False,
+        missing_values=np.nan,
+        copy=True,
+        n_estimators=100,
+        criterion=("squared_error", "gini"),
+        max_features="sqrt",
+        random_state=random_state,
+        n_jobs=-1
+    )
+
+    imputer.fit(data_df.values, cat_vars=cat_vars_idx)
+    return imputer
+
+
 def main_train():
-    parser = argparse.ArgumentParser(description="[프로세스 3] IterativeImputer 모델을 학습하고 저장합니다.")
+    parser = argparse.ArgumentParser(description="[프로세스 3] MissForest 모델을 학습하고 저장합니다.")
     
     parser.add_argument('--data-source', '-s', type=str, required=True, 
                         choices=['GK2A', 'ODAM'],
@@ -170,18 +277,21 @@ def main_train():
     if start_date_dt and end_date_dt:
         logger.info(f"  → 로드된 레코드 중 날짜 범위 내: {len(raw_df)}개")
 
-    data_to_impute, _ = clean_and_prepare_data(raw_df, args.data_source)
+    data_to_impute, _, cat_vars_idx = clean_and_prepare_data(raw_df, args.data_source)
     
     if data_to_impute is None or data_to_impute.empty:
         logger.error("❌ Imputation 대상 데이터셋이 비어 있거나 유효하지 않습니다. 스크립트를 종료합니다.")
         return
         
-    # 2. IterativeImputer 훈련
-    logger.info("  → IterativeImputer 모델 훈련 시작...")
+    # 2. MissForest 훈련
+    logger.info("  → MissForest 모델 훈련 시작...")
     
     try:
-        imputer = IterativeImputer(random_state=42, max_iter=10)
-        imputer.fit(data_to_impute)
+        imputer = train_missforest(
+            data_df=data_to_impute,
+            cat_vars_idx=cat_vars_idx,
+            random_state=42
+        )
         
         # 3. 모델 저장
         output_path = args.output_path
