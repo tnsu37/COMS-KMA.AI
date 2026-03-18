@@ -140,7 +140,8 @@ def clean_and_prepare_data(df, data_source):
     # 5. cat_vars_idx
     final_cols = data_df.columns.tolist()
     cat_vars_idx = [final_cols.index(col) for col in categorical_cols if col in final_cols]
-    
+    if len(cat_vars_idx) == 0: cat_vars_idx = None
+
     logger.info(f"  → 최종 Imputation 대상 컬럼 수: {len(final_cols)}")
     logger.info(f"  → 최종 Imputation 대상 행 수: {len(data_df)}")
     
