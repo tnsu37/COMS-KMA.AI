@@ -8,7 +8,10 @@
 4. [v8] (입력 오류 수정) Imputer가 훈련 시 본 컬럼(Feature 불일치) 오류 수정
 5. [v8] (출력 오류 수정) Imputer가 전부 NaN인 컬럼(Shape 불일치) 오류 수정
 6. [v6] --resume 기능이 일(Day) 단위로 작동합니다.
+
 """
+
+
 
 import os
 import pandas as pd
@@ -21,13 +24,13 @@ import re
 import warnings
 import time
 import joblib 
-from sklearn.experimental import enable_iterative_imputer
-from sklearn.impute import IterativeImputer
 import numpy as np 
 import gc
 import logging
 import traceback
+#from missingpy import MissForest
 from variable_mapping import get_daily_fill_columns
+
 # pandas 경고 무시
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -80,6 +83,105 @@ def setup_logger(log_file):
 
 logger = None # 전역 로거 변수
 
+# 특정 케이스 고정값(평균)
+FIXED_MEANS = {
+    "ctps_cth": 4.179584097665568,
+    "ctps_ctp": 614.7220684323216,
+    "ctps_ctt": 254.53789325394524,
+    "dcoew_radius": 20.571707302585317,
+    "dcoew_thickness": 13.293504015554864,
+    "dcoew_liquid_path": 94.42700552605407,
+    "ncot": 5.019284345219368,
+}
+
+VALID_RANGE_GK2A = {
+        'st_lon': {'type': 'con', 'values': [-np.inf, np.inf]},
+        'st_lat': {'type': 'con', 'values': [-np.inf, np.inf]},
+        'year': {'type': 'con', 'values': [2020, 2100]},
+        'month': {'type': 'con', 'values': [1,12]},
+        'day': {'type': 'con', 'values': [1,31]},
+        'hour': {'type': 'con', 'values': [0,23]},
+        'cld': {'type': 'cat', 'values': [0,1,2]},
+        'ctps_cp': {'type': 'cat', 'values': [0,1,2,6]},
+        'ctps_cth': {'type': 'con', 'values': [0,1700]},
+        'ctps_ctp': {'type': 'con', 'values': [0,120000]},
+        'ctps_ctt': {'type': 'con', 'values': [0,35000]},
+        'cla_type': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8,9]},
+        'cla_cloud_fraction': {'type': 'con', 'values': [0,100]},
+        'dcoew_radius': {'type': 'con', 'values': [2,90]},
+        'dcoew_thickness': {'type': 'con', 'values': [1,160]},
+        'dcoew_liquid_path': {'type': 'con', 'values': [25,1000]},
+        'ncot': {'type': 'con', 'values': [-np.inf, np.inf]},
+        #'ci_ci1': {'type': '', 'values': []},
+        'ci_ci1_ccm': {'type': 'cat', 'values': [0,1,2,3,4,9]},
+        #'ci_ci1_obj': {'type': '', 'values': []},
+        #'ci_ci1_prob': {'type': 'cat', 'values': [0,1,2,3,4]},
+        'ci_ci2': {'type': 'con', 'values': [-np.inf, np.inf]},
+        #'ci_ci2_obj': {'type': '', 'values': []},
+        #'fog': {'type': 'cat', 'values': [1,2,3,4,5,6,7]},
+        'rr': {'type': 'con', 'values': [0,100]},
+        'qpn_rate': {'type': 'con', 'values': [0,300]},
+        #'qpn_probability': {'type': 'con', 'values': [0,100]},
+        #'tqprof_q': {'type': 'con', 'values': [0,100]},
+        #'tqprof_t': {'type': 'con', 'values': [180,320]},
+        'tpw_low': {'type': 'con', 'values': [0, np.inf]},
+        'tpw_mid': {'type': 'con', 'values': [0, np.inf]},
+        'tpw_high': {'type': 'con', 'values': [0, np.inf]},
+        'tpw': {'type': 'con', 'values': [0, 100]},
+        #'aii_cape': {'type': 'con', 'values': [0,5000]},
+        #'aii_ki': {'type': 'con', 'values': [0,40]},
+        #'aii_li': {'type': '', 'values': []},
+        #'aii_si': {'type': '', 'values': []},
+        'aii_tti': {'type': 'con', 'values': [-43,56]},
+        #'apps_aep': {'type': 'con', 'values': [-0.5,3]},
+        #'apps_aod': {'type': 'con', 'values': [0,5]},
+        #'apps_daod055': {'type': 'con', 'values': [0,5]},
+        #'apps_daod11': {'type': 'con', 'values': [0,5]},
+        #'lst': {'type': 'con', 'values': [213,330]},
+        #'sal_bsa': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b01': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b02': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b03': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b04': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b06': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b01': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b02': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b03': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b04': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b06': {'type': 'con', 'values': [0,10000]},
+        #'vgt_ndvi': {'type': 'con', 'values': [0,1]},
+        #'vgt_evi': {'type': 'con', 'values': [0,1]},
+        'swrad_downward': {'type': 'con', 'values': [0, np.inf]},
+        'swrad_absorbed': {'type': 'con', 'values': [0, np.inf]},
+        #'lwrad_downward': {'type': '', 'values': []},
+        #'lwrad_upward': {'type': '', 'values': []},
+        'ctps_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
+        'cla_type_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
+        'cla_cloud_fraction_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5]},
+        'dcoew_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
+        'ncot_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
+        'rr_raining_ct_flag': {'type': 'con', 'values': [1,20]},
+        'qpn_dqf1': {'type': 'cat', 'values': [-1,0,1]},
+        'tpw_dqf1': {'type': 'cat', 'values': [0,1,2]},
+        'tpw_dqf2': {'type': 'cat', 'values': [0,1]},
+        'aii_dqf1': {'type': 'cat', 'values': [0,1,2,3]},
+        'aii_dqf2': {'type': 'cat', 'values': [0,1]},
+        'swrad_downward_dqf': {'type': 'cat', 'values': [0,1]},
+        'swrad_absorbed_dqf': {'type': 'cat', 'values': [0,1]},
+        'swrad_dqf1': {'type': 'cat', 'values': [0,1]}
+}
+
+GK2A_CATEGORICAL_COLS = [
+    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "cat"
+]
+
+GK2A_CONTINUOUS_COLS = [
+    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "con"
+]
+
+GK2A_MODEL_COLS = GK2A_CATEGORICAL_COLS + GK2A_CONTINUOUS_COLS
+
 # --- 헬퍼 함수 ---
 
 SOURCE_DIR_MAP = {
@@ -87,6 +189,85 @@ SOURCE_DIR_MAP = {
     'ODAM': 'WEATHER_ODAM',
     'GEMS': 'GEMS'
 }
+
+def apply_categorical_outlier_to_99(df):
+    for col, meta in VALID_RANGE_GK2A.items():
+        if meta.get("type") == "cat" and col in df.columns:
+            valid_values = set(meta["values"])
+            mask = (~df[col].isin(valid_values)) & (~df[col].isna())
+            df.loc[mask, col] = 99
+    return df
+
+def rule_based_imputation(df):
+    """GK2A의 특정 변수의 특성을 반영하여 룰 기반 보간을 우선 수행합니다"""
+
+    df = apply_categorical_outlier_to_99(df)
+
+    for col in ["swrad_downward", "swrad_absorbed"]:
+        if col in df.columns: df[col] = df[col].fillna(0)
+
+    has_cols_1 = all(c in df.columns for c in ["cld", "ctps_cp"])
+    has_cols_2 = all(c in df.columns for c in ["cld", "ctps_cp", "cla_type"])
+
+    # 1. [ctps_cth, ctps_ctp, ctps_ctt] = if (cld=2 & ctps_cp=0)
+    if has_cols_1:
+        cond = (df["cld"] == 2) & (df["ctps_cp"] == 0)
+        for col in ["ctps_cth", "ctps_ctp", "ctps_ctt"]:
+            if col in df.columns:
+                mask = cond & df[col].isna()
+                df.loc[mask, col] = FIXED_MEANS[col]
+
+    # 2. [dcoew_radius, docew_thickness] = if (cld=2 & ctps_cp=0) else if (cla_type=255)
+    if has_cols_2:
+        cond1 = (df["cld"] == 2) & (df["ctps_cp"] == 0)
+        cond2 = (df["cla_type"] == 99)
+
+        for col in ["dcoew_radius", "dcoew_thickness"]:
+            if col in df.columns:
+                mask1 = cond1 & df[col].isna()
+                df.loc[mask1, col] = FIXED_MEANS[col]
+                mask2 = (~cond1) & cond2 & df[col].isna()
+                df.loc[mask2, col] = FIXED_MEANS[col]
+
+    # 3. dcoew_liquid_path = if not (cld=0 & ctps_cp=1)
+    if has_cols_1 and "dcoew_liquid_path" in df.columns:
+        cond = ~((df["cld"] == 0) & (df["ctps_cp"] == 1))
+        mask = cond & df["dcoew_liquid_path"].isna()
+        df.loc[mask, "dcoew_liquid_path"] = FIXED_MEANS["dcoew_liquid_path"]
+
+    # 4. ncot = if (cld=2)
+    if "cld" in df.columns and "ncot" in df.columns:
+        cond = (df["cld"] == 2)
+        mask = cond & df["ncot"].isna()
+        df.loc[mask, "ncot"] = FIXED_MEANS["ncot"]
+
+    return df
+
+
+def nearest_valid_category(x, valid_values):
+    if pd.isna(x):
+        return np.nan
+    return min(valid_values, key=lambda v: abs(v - x))
+
+def postprocess_imputed_df(df, data_source, valid_range):
+    if df.empty:
+        return df
+
+    out = df.copy()
+
+    if data_source != "GK2A":
+        return out
+
+    # 범주형 → nearest valid
+    for col, info in valid_range.items():
+        if col not in out.columns:
+            continue
+
+        if info["type"] == "cat":
+            valid_values = info["values"]
+            out[col] = out[col].apply(lambda x: nearest_valid_category(x, valid_values))
+
+    return out
 
 def calculate_pivot_date(data_date, first_pivot, pivot_interval_days):
     """데이터 날짜에 맞는 pivot 날짜 계산"""
@@ -185,16 +366,30 @@ def separate_data_for_imputation(df):
     logger.info(f"    → ⚙️ Imputation 적용 데이터 분리 중...")
     
     key_cols = ['geoId', 'geo_lon', 'geo_lat', 'dateTime']
-    flag_cols = [col for col in df.columns if '_dqf' in col.lower() or '_flag' in col.lower()]
+    drop_cols = [
+        'ci_ci1', 'ci_ci1_obj', 'ci_ci1_prob', 'ci_ci2_obj', 'fog',
+        'qpn_probability', 'tqprof_q', 'tqprof_t', 'aii_cape', 'aii_ki',
+        'aii_li', 'aii_si', 'apps_aep', 'apps_aod', 'apps_daod055', 'apps_daod11',
+        'lst', 'sal_bsa', 'sal_bsa_b01', 'sal_bsa_b02', 'sal_bsa_b03', 'sal_bsa_b04',
+        'sal_bsa_b06', 'sal_wsa', 'sal_wsa_b01', 'sal_wsa_b02', 'sal_wsa_b03',
+        'sal_wsa_b04', 'sal_wsa_b06', 'vgt_ndvi', 'vgt_evi', 'lwrad_downward', 'lwrad_upward',
+        'apps_aep_dqf', 'apps_aod_dqf', 'apps_daod055_dqf', 'apps_daod11_dqf', 'apps_daod011_dqf',
+        'lst_dqf', 'lwrad_downward_dqf', 'lwrad_dqf1', 'lwrad_upward_dqf',
+        'sal_dqf1', 'sal_dqf2', 'tqprof_dqf1', 'tqprof_dqf2', 'vgt_dqf1', 'fog_dqf', 'id' 
+                       ]
     
     key_cols_existing = [col for col in key_cols if col in df.columns]
     key_df = df[key_cols_existing].copy()
     
-    cols_to_drop = key_cols + flag_cols
+    cols_to_drop = key_cols + drop_cols
     cols_to_drop_existing = [col for col in cols_to_drop if col in df.columns]
     data_df = df.drop(cols_to_drop_existing, axis=1)
-    logger.info(f"      - 제거된 컬럼: Key {len([c for c in key_cols if c in df.columns])}개, Flag {len(flag_cols)}개")
+    logger.info(f"      - 제거된 컬럼: {len(cols_to_drop_existing)}개")
     
+    for col in data_df.columns:
+        if not pd.api.types.is_numeric_dtype(data_df[col]):
+            data_df[col] = pd.to_numeric(data_df[col], errors='coerce')
+
     non_numeric_cols = data_df.select_dtypes(exclude=[np.number]).columns.tolist()
     if non_numeric_cols:
         logger.info(f"      - 숫자형 아닌 컬럼 제외: {non_numeric_cols}")
@@ -338,7 +533,7 @@ def main(args):
         
         current_imputer = None
         current_pivot_date = None
-        expected_cols = None # [v8] Imputer가 기대하는 컬럼 목록
+        #expected_cols = None # [v8] Imputer가 기대하는 컬럼 목록
 
         for date_key in sorted(day_file_map.keys()):
             file_list = day_file_map[date_key]
@@ -361,14 +556,10 @@ def main(args):
                 try:
                      current_imputer = joblib.load(imputer_filepath)
                      current_pivot_date = pivot_date
-                     expected_cols = current_imputer.feature_names_in_ 
-                     
-                     # --- [v9 핵심 수정] ---
-                     # Imputer가 배열(Array) 대신 판다스(Pandas) DataFrame을 반환하도록 설정
-                     current_imputer.set_output(transform="pandas")
-                     # --------------------
+                     valid_range = VALID_RANGE_GK2A if data_source == "GK2A" else {}
                      
                      logger.info(f"    → ✓ Pivot {pivot_date} Imputer 로드 완료.")
+
                 except FileNotFoundError:
                      logger.error(f"    - ❌ Imputer 파일을 찾을 수 없습니다: {imputer_filepath}. 이 날짜를 건너뜁니다.")
                      main_pbar.update(1); continue
@@ -380,26 +571,30 @@ def main(args):
             if day_df is None:
                 logger.error(f"  - ❌ {date_key} 데이터 로드 실패. 건너뜁니다.")
                 main_pbar.update(1); continue
+            
+            if data_source == "GK2A":
+                day_df = rule_based_imputation(day_df)
 
             # --- [v9.2] SAL/VGT 00시 값 보간 (Imputation 전에 선행) ---
-            try:
+            # try:
                 
-                # GK2A 데이터에 대해서만 이 로직을 적용
-                if data_source == 'GK2A' and DAILY_FILL_COLUMNS:
-                    existing_fill_cols = [col for col in DAILY_FILL_COLUMNS if col in day_df.columns]
-                    if existing_fill_cols:
-                        logger.info(f"    → 🔄 {date_key} SAL/VGT 00시 값 보간 적용 중...")
-                        day_df.sort_values(by=['geoId', 'dateTime'], inplace=True)
-                        # geoId별로 00시 값을 ffill/bfill (P1&2 로직과 동일)
-                        day_df[existing_fill_cols] = day_df.groupby('geoId')[existing_fill_cols].transform('ffill')
-                        day_df[existing_fill_cols] = day_df.groupby('geoId')[existing_fill_cols].transform('bfill')  
-            except Exception as e:
-                logger.error(f"    - ❌ {date_key} SAL/VGT 보간 중 오류: {e}")
+            #     # GK2A 데이터에 대해서만 이 로직을 적용
+            #     if data_source == 'GK2A' and DAILY_FILL_COLUMNS:
+            #         existing_fill_cols = [col for col in DAILY_FILL_COLUMNS if col in day_df.columns]
+            #         if existing_fill_cols:
+            #             logger.info(f"    → 🔄 {date_key} SAL/VGT 00시 값 보간 적용 중...")
+            #             day_df.sort_values(by=['geoId', 'dateTime'], inplace=True)
+            #             # geoId별로 00시 값을 ffill/bfill (P1&2 로직과 동일)
+            #             day_df[existing_fill_cols] = day_df.groupby('geoId')[existing_fill_cols].transform('ffill')
+            #             day_df[existing_fill_cols] = day_df.groupby('geoId')[existing_fill_cols].transform('bfill')  
+            # except Exception as e:
+            #     logger.error(f"    - ❌ {date_key} SAL/VGT 보간 중 오류: {e}")
             # --------------------------------------------------------
 
             # [수정] data_col_names: Imputer 적용 전 원본 데이터의 컬럼 목록
             key_df, data_df, data_col_names = separate_data_for_imputation(day_df)
             original_index = data_df.index
+            expected_cols = data_col_names.copy()
             del day_df
             gc.collect()
 
@@ -414,11 +609,20 @@ def main(args):
                     
                     # 1. Imputer가 훈련(fit) 시 기억하는 컬럼(55개)으로 현재 데이터를 재정렬
                     # -> "Feature names... missing" 오류 해결
-                    data_for_transform = data_df.reindex(columns=expected_cols, index=original_index)
                     
                     # 2. Imputer 실행 (set_output="pandas"로 인해 DataFrame 반환)
                     # (입력은 55개, Imputer가 처리한 53개 컬럼만 가진 DF가 반환됨)
-                    imputed_df_processed = current_imputer.transform(data_for_transform)
+
+                    data_for_transform = data_df.reindex(columns=expected_cols, index=original_index)
+
+                    imputed_array = current_imputer.transform(data_for_transform.values)
+
+                    imputed_df_processed = pd.DataFrame(
+                        imputed_array,
+                        columns=expected_cols,
+                        index=original_index
+                    )
+
                     transform_elapsed = time.time() - start_transform
                     
                     # 3. 원본 컬럼(data_col_names) 기준으로 최종 복원
@@ -447,6 +651,7 @@ def main(args):
             logger.info(f"      - key_df 컬럼: {len(key_df.columns)}개 ({list(key_df.columns)})")
             logger.info(f"      - imputed_df_data_part 컬럼: {len(imputed_df_data_part.columns)}개")
             final_imputed_df = pd.concat([key_df, imputed_df_data_part], axis=1)
+            final_imputed_df = postprocess_imputed_df(final_imputed_df, data_source, valid_range)
             logger.info(f"      - final_imputed_df 컬럼: {len(final_imputed_df.columns)}개")
             del key_df, imputed_df_data_part
             gc.collect()
