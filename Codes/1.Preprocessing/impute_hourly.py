@@ -180,8 +180,6 @@ GK2A_CONTINUOUS_COLS = [
     col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "con"
 ]
 
-GK2A_MODEL_COLS = GK2A_CATEGORICAL_COLS + GK2A_CONTINUOUS_COLS
-
 # --- 헬퍼 함수 ---
 
 SOURCE_DIR_MAP = {
@@ -242,7 +240,6 @@ def rule_based_imputation(df):
         df.loc[mask, "ncot"] = FIXED_MEANS["ncot"]
 
     return df
-
 
 def nearest_valid_category(x, valid_values):
     if pd.isna(x):
