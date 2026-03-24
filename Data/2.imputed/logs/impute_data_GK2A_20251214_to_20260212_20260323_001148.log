@@ -1,0 +1,179 @@
+2026-03-23 00:11:48 | INFO     | ======================================================================
+2026-03-23 00:11:48 | INFO     | 🛰️  [결측치 채우기] Pivot 기반 Imputation 적용 시작 (v10 - Pivot 모드)
+2026-03-23 00:11:48 | INFO     |   - 데이터 소스: GK2A
+2026-03-23 00:11:48 | INFO     |   - 입력 경로 (HOURLY_DATA): C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Data\1.outliers_rm
+2026-03-23 00:11:48 | INFO     |   - Imputer 경로: C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Imputers
+2026-03-23 00:11:48 | INFO     |   - 출력 경로 (IMPUTED_DATA): C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Data\2.imputed
+2026-03-23 00:11:48 | INFO     |   - First Pivot: 2026-02-06
+2026-03-23 00:11:48 | INFO     |   - Pivot Interval: 1일
+2026-03-23 00:11:48 | INFO     |   - [v10] 처리 범위: 2025-12-14 부터 2026-02-12 까지
+2026-03-23 00:11:48 | INFO     |   - 모드: 🔄 Resume
+2026-03-23 00:11:48 | INFO     |   - 로그 파일: C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Data\2.imputed\logs\impute_data_GK2A_20251214_to_20260212_20260323_001148.log
+2026-03-23 00:11:48 | INFO     | ======================================================================
+2026-03-23 00:11:48 | INFO     | 📂 스캔 중 (Pivot 기반, Interval: 1일): C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Data\1.outliers_rm\KOMPSAT_LE2
+2026-03-23 00:11:48 | INFO     |   → First Pivot: 2026-02-06
+2026-03-23 00:11:48 | INFO     |   → 47개 날짜 데이터 발견. (범위: 2025-12-14~2026-02-12)
+2026-03-23 00:11:48 | INFO     | --- 2025-12-14 Imputation 적용 시작 ---
+2026-03-23 00:11:48 | INFO     |     → 讀 Imputer 로드 중: gk2a_imputer_2026-02-06.pkl (Pivot: 2026-02-06)
+2026-03-23 00:11:52 | INFO     |     → ✓ Pivot 2026-02-06 Imputer 로드 완료.
+2026-03-23 00:11:52 | INFO     |   → 讀 2025-12-14 데이터 로드 중 (2개 파일)...
+2026-03-23 00:11:53 | INFO     |     → ✓ 로드 및 병합 완료 (총 214200행)
+2026-03-23 00:11:53 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:11:53 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:11:53 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:11:53 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:11:53 | ERROR    |     - ❌ 2025-12-14 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:11:54 | INFO     | --- 2025-12-15 Imputation 적용 시작 ---
+2026-03-23 00:11:54 | INFO     |   → 讀 2025-12-15 데이터 로드 중 (21개 파일)...
+2026-03-23 00:12:00 | INFO     |     → ✓ 로드 및 병합 완료 (총 2249100행)
+2026-03-23 00:12:03 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:12:04 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:12:04 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:12:04 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:12:05 | ERROR    |     - ❌ 2025-12-15 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:12:05 | INFO     | --- 2025-12-16 Imputation 적용 시작 ---
+2026-03-23 00:12:05 | INFO     |   → 讀 2025-12-16 데이터 로드 중 (23개 파일)...
+2026-03-23 00:12:12 | INFO     |     → ✓ 로드 및 병합 완료 (총 2463300행)
+2026-03-23 00:12:16 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:12:16 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:12:16 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:12:16 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:12:17 | ERROR    |     - ❌ 2025-12-16 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:12:17 | INFO     | --- 2025-12-17 Imputation 적용 시작 ---
+2026-03-23 00:12:17 | INFO     |   → 讀 2025-12-17 데이터 로드 중 (23개 파일)...
+2026-03-23 00:12:25 | INFO     |     → ✓ 로드 및 병합 완료 (총 2463300행)
+2026-03-23 00:12:28 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:12:29 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:12:29 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:12:29 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:12:29 | ERROR    |     - ❌ 2025-12-17 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:12:29 | INFO     | --- 2025-12-18 Imputation 적용 시작 ---
+2026-03-23 00:12:29 | INFO     |   → 讀 2025-12-18 데이터 로드 중 (23개 파일)...
+2026-03-23 00:12:37 | INFO     |     → ✓ 로드 및 병합 완료 (총 2463300행)
+2026-03-23 00:12:40 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:12:41 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:12:41 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:12:41 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:12:42 | ERROR    |     - ❌ 2025-12-18 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:12:42 | INFO     | --- 2025-12-19 Imputation 적용 시작 ---
+2026-03-23 00:12:42 | INFO     |   → 讀 2025-12-19 데이터 로드 중 (23개 파일)...
+2026-03-23 00:12:50 | INFO     |     → ✓ 로드 및 병합 완료 (총 2463300행)
+2026-03-23 00:12:53 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:12:53 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:12:53 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:12:54 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:12:54 | ERROR    |     - ❌ 2025-12-19 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:12:54 | INFO     | --- 2025-12-20 Imputation 적용 시작 ---
+2026-03-23 00:12:54 | INFO     |   → 讀 2025-12-20 데이터 로드 중 (20개 파일)...
+2026-03-23 00:13:01 | INFO     |     → ✓ 로드 및 병합 완료 (총 2142000행)
+2026-03-23 00:13:04 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:13:04 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:13:04 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:13:04 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:13:05 | ERROR    |     - ❌ 2025-12-20 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:13:05 | INFO     | --- 2025-12-21 Imputation 적용 시작 ---
+2026-03-23 00:13:05 | INFO     |   → 讀 2025-12-21 데이터 로드 중 (22개 파일)...
+2026-03-23 00:13:12 | INFO     |     → ✓ 로드 및 병합 완료 (총 2356200행)
+2026-03-23 00:13:16 | INFO     |     → ⚙️ Imputation 적용 데이터 분리 중...
+2026-03-23 00:13:17 | INFO     |       - 제거된 컬럼: 52개
+2026-03-23 00:13:17 | INFO     |       - 적용 대상 컬럼: 42개
+2026-03-23 00:13:17 | INFO     |     → ✨ Imputation 적용 중 (transform)...
+2026-03-23 00:13:17 | ERROR    |     - ❌ 2025-12-21 Imputation 적용 실패: Input contains NaN.
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\Codes\1.Preprocessing\impute_hourly.py", line 615, in main
+    imputed_array = current_imputer.transform(data_for_transform.values)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\missingpy\missforest.py", line 504, in transform
+    X = check_array(X, accept_sparse=False, dtype=np.float64,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 899, in check_array
+    _assert_all_finite(
+  File "C:\Users\USER\Documents\GitHub\COMS-KMA.AI\.venv\Lib\site-packages\sklearn\utils\validation.py", line 146, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+2026-03-23 00:13:17 | INFO     | --- 2025-12-22 Imputation 적용 시작 ---
+2026-03-23 00:13:17 | INFO     |   → 讀 2025-12-22 데이터 로드 중 (24개 파일)...

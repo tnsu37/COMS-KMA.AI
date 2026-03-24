@@ -554,6 +554,9 @@ def main(args):
                      current_imputer = joblib.load(imputer_filepath)
                      current_pivot_date = pivot_date
                      valid_range = VALID_RANGE_GK2A if data_source == "GK2A" else {}
+
+                     # missingpy transform에서 NaN을 못 받는 문제 우회
+                     current_imputer.missing_values = -9999
                      
                      logger.info(f"    → ✓ Pivot {pivot_date} Imputer 로드 완료.")
 
@@ -611,6 +614,9 @@ def main(args):
                     # (입력은 55개, Imputer가 처리한 53개 컬럼만 가진 DF가 반환됨)
 
                     data_for_transform = data_df.reindex(columns=expected_cols, index=original_index)
+
+                    # missingpy transform 우회용 sentinel
+                    data_for_transform = data_for_transform.fillna(-9999)
 
                     imputed_array = current_imputer.transform(data_for_transform.values)
 

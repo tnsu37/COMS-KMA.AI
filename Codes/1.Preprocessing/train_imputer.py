@@ -8,7 +8,8 @@ import numpy as np
 import pandas as pd
 
 from datetime import timedelta
-from missingpy import MissForest
+from lightgbm import LGBMClassifier, LGBMRegressor
+from missforest import MissForest
 from datetime import datetime, timedelta
 
 warnings.filterwarnings("ignore")
@@ -234,10 +235,9 @@ def clean_and_prepare_data(df, data_source):
         if not pd.api.types.is_numeric_dtype(data_df[col]):
             data_df[col] = pd.to_numeric(data_df[col], errors='coerce')
 
-    # 5. cat_vars_idx
+    # 5. cat_cols
     final_cols = data_df.columns.tolist()
-    cat_vars_idx = [final_cols.index(col) for col in categorical_cols if col in final_cols]
-    if len(cat_vars_idx) == 0: cat_vars_idx = None
+    cat_cols = [col for col in categorical_cols if col in data_df.columns]
 
     logger.info(f"  → 최종 Imputation 대상 컬럼 수: {len(final_cols)}")
     logger.info(f"  → 최종 Imputation 대상 행 수: {len(data_df)}")
@@ -245,7 +245,7 @@ def clean_and_prepare_data(df, data_source):
     # DQF/Flag가 제거된 DataFrame에서 ID 컬럼만 추출
     id_df = df_cleaned[['geoId', 'dateTime']].copy()
     
-    return data_df, id_df, cat_vars_idx
+    return data_df, id_df, cat_cols
 
 
 def load_data_for_training(input_dir, data_source, start_date=None, end_date=None):
@@ -303,21 +303,34 @@ def load_data_for_training(input_dir, data_source, start_date=None, end_date=Non
     return combined_df
 
 
-def train_missforest(data_df, cat_vars_idx, random_state=42):
+def train_missforest(data_df, cat_cols, random_state=42):
     logger.info("  → MissForest 모델 훈련 시작...")
 
-    imputer = MissForest(
-        max_iter=10,
-        decreasing=False,
-        missing_values=np.nan,
-        copy=True,
-        n_estimators=300,
-        max_features=0.5,
+    clf = LGBMClassifier(
+        n_estimators=100,
         random_state=random_state,
-        n_jobs=-1
+        n_jobs=-1,
+        verbosity=-1
     )
 
-    imputer.fit(data_df.values, cat_vars=cat_vars_idx)
+    rgr = LGBMRegressor(
+        n_estimators=100,
+        random_state=random_state,
+        n_jobs=-1,
+        verbosity=-1
+    )
+
+    imputer = MissForest(
+        clf=clf,
+        rgr=rgr,
+        categorical=cat_cols if cat_cols else None,
+        initial_guess="median",
+        max_iter=3,
+        early_stopping=True,
+        verbose=2
+    )
+
+    imputer.fit(data_df)
     return imputer
 
 
@@ -393,11 +406,16 @@ def main_train():
     if start_date_dt and end_date_dt:
         logger.info(f"  → 로드된 레코드 중 날짜 범위 내: {len(raw_df)}개")
 
-    data_to_impute, _, cat_vars_idx = clean_and_prepare_data(raw_df, args.data_source)
+    data_to_impute, _, cat_cols = clean_and_prepare_data(raw_df, args.data_source)
     
     if data_to_impute is None or data_to_impute.empty:
         logger.error("❌ Imputation 대상 데이터셋이 비어 있거나 유효하지 않습니다. 스크립트를 종료합니다.")
         return
+    
+    if len(data_to_impute) > 5000000:
+        logger.info(f"  → 샘플링 전 행 수: {len(data_to_impute)}")
+        data_to_impute = data_to_impute.sample(n=5000000, random_state=42).reset_index(drop=True)
+        logger.info(f"  → 샘플링 후 행 수: {len(data_to_impute)}")
         
     # 2. MissForest 훈련
     logger.info("  → MissForest 모델 훈련 시작...")
@@ -405,7 +423,7 @@ def main_train():
     try:
         imputer = train_missforest(
             data_df=data_to_impute,
-            cat_vars_idx=cat_vars_idx,
+            cat_cols=cat_cols,
             random_state=42
         )
         
