@@ -438,20 +438,20 @@ def save_imputed_hourly_files(imputed_df, imputed_dir, data_source):
 
             hourly_df.drop(['kst_date_str', 'kst_hour'], axis=1, inplace=True, errors='ignore')
 
-            try:
-                from variable_mapping import get_final_columns
-                final_cols_no_flags = [c for c in get_final_columns() if '_dqf' not in c and '_flag' not in c]
-                cols_ordered = [c for c in final_cols_no_flags if c in hourly_df.columns]
+            # try:
+            #     from variable_mapping import get_final_columns
+            #     final_cols_no_flags = [c for c in get_final_columns() if '_dqf' not in c and '_flag' not in c]
+            #     cols_ordered = [c for c in final_cols_no_flags if c in hourly_df.columns]
                 
-                # 교집합이 key 컬럼(4개)보다 많을 때만 재정렬 (실제 GK2A 데이터)
-                # 테스트 데이터 등 다른 컬럼 이름을 사용할 경우 원본 유지
-                if len(cols_ordered) > 4:
-                    hourly_df = hourly_df[cols_ordered]
-                    logger.debug(f"      [Hour {hour}] variable_mapping 적용: {len(cols_ordered)}개 컬럼")
-                else:
-                    logger.debug(f"      [Hour {hour}] variable_mapping 스킵 (교집합 {len(cols_ordered)}개만 발견)")
-            except ImportError:
-                pass 
+            #     # 교집합이 key 컬럼(4개)보다 많을 때만 재정렬 (실제 GK2A 데이터)
+            #     # 테스트 데이터 등 다른 컬럼 이름을 사용할 경우 원본 유지
+            #     if len(cols_ordered) > 4:
+            #         hourly_df = hourly_df[cols_ordered]
+            #         logger.debug(f"      [Hour {hour}] variable_mapping 적용: {len(cols_ordered)}개 컬럼")
+            #     else:
+            #         logger.debug(f"      [Hour {hour}] variable_mapping 스킵 (교집합 {len(cols_ordered)}개만 발견)")
+            # except ImportError:
+            #     pass 
 
             hourly_df.to_csv(filepath, index=False)
             saved_count += 1
@@ -554,9 +554,6 @@ def main(args):
                      current_imputer = joblib.load(imputer_filepath)
                      current_pivot_date = pivot_date
                      valid_range = VALID_RANGE_GK2A if data_source == "GK2A" else {}
-
-                     # missingpy transform에서 NaN을 못 받는 문제 우회
-                     current_imputer.missing_values = -9999
                      
                      logger.info(f"    → ✓ Pivot {pivot_date} Imputer 로드 완료.")
 
@@ -615,10 +612,7 @@ def main(args):
 
                     data_for_transform = data_df.reindex(columns=expected_cols, index=original_index)
 
-                    # missingpy transform 우회용 sentinel
-                    data_for_transform = data_for_transform.fillna(-9999)
-
-                    imputed_array = current_imputer.transform(data_for_transform.values)
+                    imputed_array = current_imputer.transform(data_for_transform)
 
                     imputed_df_processed = pd.DataFrame(
                         imputed_array,
