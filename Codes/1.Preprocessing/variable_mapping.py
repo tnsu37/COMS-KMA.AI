@@ -365,9 +365,20 @@ VALID_RANGE_GK2A = {
         'swrad_dqf1': {'type': 'cat', 'values': [0,1]}
 }
 
+VALID_RANGE_ODAM = {
+    't1h': {'type': 'con', 'values':[]},
+    'uuu': {'type': 'con', 'values':[]},
+    'vvv': {'type': 'con', 'values':[]},
+    'vec': {'type': 'con', 'values':[]},
+    'wsd': {'type': 'con', 'values':[]},
+    'pty': {'type': 'con', 'values':[]},
+    'rn1': {'type': 'con', 'values':[]},
+    'reh': {'type': 'con', 'values':[]}
+}
+
 VALID_RANGE = {
     'GK2A': VALID_RANGE_GK2A,
-    'ODAM': {},
+    'ODAM': VALID_RANGE_ODAM,
     'GEMS': {},
     'AIRKOREA': {}
 }

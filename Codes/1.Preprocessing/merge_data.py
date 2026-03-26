@@ -60,7 +60,7 @@ GEMS_COLS_TO_DROP = [
 ]
 
 # Merge Key (모든 소스 공통)을 key로 사용할 것]
-MERGE_KEYS = ['geoId', 'geo_lon', 'geo_lat', 'dateTime']
+MERGE_KEYS = ['geoId', 'geo_lon', 'geo_lat', 'dateTime', 'year', 'month', 'day']
 
 def get_expected_periods(start_dt, end_dt, mode):
     """
@@ -114,10 +114,10 @@ def filter_existing_by_range(df, start_dt, end_dt, mode):
 
     if mode == "hourly":
         mask = (out["dateTime"] >= start_dt) & (out["dateTime"] <= (end_dt + timedelta(days=1) - timedelta(seconds=1)))
-        out = out.loc[mask].copy()
+        out = out.loc[mask]
     else:
         mask = (out["date"] >= start_dt.date()) & (out["date"] <= end_dt.date())
-        out = out.loc[mask].copy()
+        out = out.loc[mask]
 
     return out
 
@@ -200,10 +200,7 @@ def make_daily_output(master_df):
 
     daily_final = daily_other_df.join(daily_mean_df, how='left').reset_index()
     daily_final["date"] = daily_final["date_key"]
-    daily_final.drop(columns=["date_key", "dateTime"], errors="ignore", inplace=True)
-
-    cols = ["date"] + [c for c in daily_final.columns if c != "date"]
-    daily_final = daily_final[cols]
+    daily_final.drop(columns=["date_key", "dateTime", "hour"], errors="ignore", inplace=True)
 
     return daily_final
 
@@ -216,13 +213,7 @@ def get_period_series(df, mode):
         return pd.to_datetime(df["dateTime"], errors="coerce").dt.date
     else:
         raise ValueError(f"지원하지 않는 mode: {mode}")
-    
-def get_airkorea_value_columns(df):
-    candidate_cols = [
-        'stationName', 'mangName',
-        'so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value'
-    ]
-    return [c for c in candidate_cols if c in df.columns]
+
     
 def get_source_presence_periods(df, source, mode):
     """
@@ -232,7 +223,10 @@ def get_source_presence_periods(df, source, mode):
         return set()
 
     if source == "AIRKOREA":
-        value_cols = get_airkorea_value_columns(df)
+        value_cols = [
+        'stationName', 'mangName',
+        'so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value'
+        ]
     else:
         valid_range = VALID_RANGE.get(source, {})
         base_cols = list(valid_range.keys())
@@ -290,7 +284,10 @@ def filter_airkorea_rows(df):
     if df is None or df.empty:
         return df.copy()
 
-    air_cols = get_airkorea_value_columns(df)
+    air_cols = [
+        'stationName', 'mangName',
+        'so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value'
+        ]
     if not air_cols:
         logger.warning("⚠️ AIRKOREA 값 컬럼이 없습니다.")
         return df.iloc[0:0].copy()
@@ -348,9 +345,8 @@ def load_and_preprocess_file(filepath, source):
             # ODAM: st_lon, st_lat 열 drop
             df.drop(columns=ODAM_COLS_TO_DROP, errors='ignore', inplace=True)
         elif source == 'GEMS':
-            # GEMS: 메타데이터 열 drop (DQF/Flag는 이미 제거됨을 가정)
+            # GEMS: 메타데이터 열 drop
             df.drop(columns=GEMS_COLS_TO_DROP, errors='ignore', inplace=True)
-        # GK2A: DQF/Flag는 프로세스 3에서 이미 제거되었으므로 그대로 사용
 
         # 원핫인코딩
         df = one_hot_encode(df, data_source= source, exclude_keys= MERGE_KEYS)
@@ -595,6 +591,7 @@ def main_merge():
     logger.info(f"  → 최종 결과 준비 완료. (총 {len(final_output_df)}행, {len(final_output_df.columns)}열)")
 
     # 6. input-file 업데이트(캐시 파일로 재사용)
+    # input file의 name을 변경할 필요가 있음. 규칙 적용 필요.
     if args.input_file:
         os.makedirs(os.path.dirname(args.input_file), exist_ok=True)
         save_df = final_output_df.copy()
@@ -619,12 +616,6 @@ def main_merge():
     common_sources = [s for s in ["ODAM", "GK2A", "AIRKOREA"] if s in args.sources]
 
     if ("common_period" in args.save_types) or ("common_period_airkorea_only" in args.save_types):
-        if len(common_sources) < 3:
-            logger.warning(
-                f"⚠️ common_period 계열 저장은 보통 ODAM, GK2A, AIRKOREA가 모두 있어야 의미가 큽니다. "
-                f"현재 포함 source: {common_sources}"
-            )
-
         common_periods = get_common_periods(final_output_df, args.mode, common_sources)
         common_df = filter_by_periods(final_output_df, common_periods, args.mode)
 
