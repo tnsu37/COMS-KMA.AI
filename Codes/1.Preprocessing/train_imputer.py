@@ -11,6 +11,7 @@ from datetime import timedelta
 from lightgbm import LGBMClassifier, LGBMRegressor
 from missforest import MissForest
 from datetime import datetime, timedelta
+from variable_mapping import VALID_RANGE
 
 warnings.filterwarnings("ignore")
 
@@ -38,122 +39,20 @@ FIXED_MEANS = {
     "ncot": 5.019284345219368,
 }
 
-# GK2A의 연속형/범주형 변수의 유효범위
-# 모델링 제외 변수는 주석처리
-VALID_RANGE_GK2A = {
-        'cld': {'type': 'cat', 'values': [0,1,2]},
-        'ctps_cp': {'type': 'cat', 'values': [0,1,2,6]},
-        'ctps_cth': {'type': 'con', 'values': [0,1700]},
-        'ctps_ctp': {'type': 'con', 'values': [0,120000]},
-        'ctps_ctt': {'type': 'con', 'values': [0,35000]},
-        'cla_type': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8,9]},
-        'cla_cloud_fraction': {'type': 'con', 'values': [0,100]},
-        'dcoew_radius': {'type': 'con', 'values': [2,90]},
-        'dcoew_thickness': {'type': 'con', 'values': [1,160]},
-        'dcoew_liquid_path': {'type': 'con', 'values': [25,1000]},
-        'ncot': {'type': 'con', 'values': [-np.inf, np.inf]},
-        #'ci_ci1': {'type': '', 'values': []},
-        'ci_ci1_ccm': {'type': 'cat', 'values': [0,1,2,3,4,9]},
-        #'ci_ci1_obj': {'type': '', 'values': []},
-        #'ci_ci1_prob': {'type': 'cat', 'values': [0,1,2,3,4]},
-        'ci_ci2': {'type': 'con', 'values': [-np.inf, np.inf]},
-        #'ci_ci2_obj': {'type': '', 'values': []},
-        #'fog': {'type': 'cat', 'values': [1,2,3,4,5,6,7]},
-        'rr': {'type': 'con', 'values': [0,100]},
-        'qpn_rate': {'type': 'con', 'values': [0,300]},
-        #'qpn_probability': {'type': 'con', 'values': [0,100]},
-        #'tqprof_q': {'type': 'con', 'values': [0,100]},
-        #'tqprof_t': {'type': 'con', 'values': [180,320]},
-        'tpw_low': {'type': 'con', 'values': [0, np.inf]},
-        'tpw_mid': {'type': 'con', 'values': [0, np.inf]},
-        'tpw_high': {'type': 'con', 'values': [0, np.inf]},
-        'tpw': {'type': 'con', 'values': [0, 100]},
-        #'aii_cape': {'type': 'con', 'values': [0,5000]},
-        #'aii_ki': {'type': 'con', 'values': [0,40]},
-        #'aii_li': {'type': '', 'values': []},
-        #'aii_si': {'type': '', 'values': []},
-        'aii_tti': {'type': 'con', 'values': [-43,56]},
-        #'apps_aep': {'type': 'con', 'values': [-0.5,3]},
-        #'apps_aod': {'type': 'con', 'values': [0,5]},
-        #'apps_daod055': {'type': 'con', 'values': [0,5]},
-        #'apps_daod11': {'type': 'con', 'values': [0,5]},
-        #'lst': {'type': 'con', 'values': [213,330]},
-        #'sal_bsa': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b01': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b02': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b03': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b04': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b06': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b01': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b02': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b03': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b04': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b06': {'type': 'con', 'values': [0,10000]},
-        #'vgt_ndvi': {'type': 'con', 'values': [0,1]},
-        #'vgt_evi': {'type': 'con', 'values': [0,1]},
-        'swrad_downward': {'type': 'con', 'values': [0, np.inf]},
-        'swrad_absorbed': {'type': 'con', 'values': [0, np.inf]},
-        #'lwrad_downward': {'type': '', 'values': []},
-        #'lwrad_upward': {'type': '', 'values': []},
-        'st_lon': {'type': 'con', 'values': [-np.inf, np.inf]},
-        'st_lat': {'type': 'con', 'values': [-np.inf, np.inf]},
-        'ctps_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
-        'cla_type_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
-        'cla_cloud_fraction_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5]},
-        'dcoew_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
-        'ncot_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
-        'rr_raining_ct_flag': {'type': 'con', 'values': [1,20]},
-        'qpn_dqf1': {'type': 'cat', 'values': [-1,0,1]},
-        'tpw_dqf1': {'type': 'cat', 'values': [0,1,2]},
-        'tpw_dqf2': {'type': 'cat', 'values': [0,1]},
-        'aii_dqf1': {'type': 'cat', 'values': [0,1,2,3]},
-        'aii_dqf2': {'type': 'cat', 'values': [0,1]},
-        'swrad_downward_dqf': {'type': 'cat', 'values': [0,1]},
-        'swrad_absorbed_dqf': {'type': 'cat', 'values': [0,1]},
-        'swrad_dqf1': {'type': 'cat', 'values': [0,1]}
-}
-
-categorical_cols = [
-    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "cat"
-]
-
-continuous_cols = [
-    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "con"
-]
-
-# continuous_cols = [
-#     'ctps_cth', 'ctps_ctp', 'ctps_ctt', 'cla_cloud_fraction',
-#     'dcoew_radius', 'dcoew_thickness', 'dcoew_liquid_path', 'ncot',
-#     'ci_ci2', 'rr', 'qpn_rate', 'tpw_low', 'tpw_mid',
-#     'tpw_high', 'tpw', 'aii_tti', 'swrad_downward', 'swrad_absorbed',
-#     'rr_raining_ct_flag', 'st_lon', 'st_lat'          
-#                    ]
-# categorical_cols = [
-#     'cld', 'ctps_cp', 'cla_type', 'ci_ci1_ccm', 'ctps_dqf1',
-#     'cla_type_dqf', 'cla_cloud_fraction_dqf', 'dcoew_dqf1', 'ncot_dqf',
-#     'qpn_dqf1', 'tpw_dqf1', 'tpw_dqf2', 'aii_dqf1', 'aii_dqf2',
-#     'swrad_downward_dqf', 'swrad_absorbed_dqf', 'swrad_dqf1'
-# ]
-
-def apply_categorical_outlier_to_99(df):
-    """범주형 변수에서 허용된 값 외의 값은 99로 치환"""
-    
-    for col, meta in VALID_RANGE_GK2A.items():
+def apply_categorical_outlier_to_99(data_source,df):
+    valid_range = VALID_RANGE.get(data_source, {})
+    for col, meta in valid_range.items():
         if meta.get("type") == "cat" and col in df.columns:
             valid_values = set(meta["values"])
-            
-            # NaN 제외하고 invalid만 처리
             mask = (~df[col].isin(valid_values)) & (~df[col].isna())
             df.loc[mask, col] = 99
-
     return df
 
 
-def rule_based_imputation(df):
+def rule_based_imputation(df, data_source):
     """GK2A의 특정 변수의 특성을 반영하여 룰 기반 보간을 우선 수행합니다"""
 
-    df = apply_categorical_outlier_to_99(df)
+    df = apply_categorical_outlier_to_99(data_source,df)
 
     for col in ["swrad_downward", "swrad_absorbed"]:
         if col in df.columns: df[col] = df[col].fillna(0)
@@ -220,7 +119,7 @@ def clean_and_prepare_data(df, data_source):
         logger.info(f"  → GK2A - 보간 제외 대상 컬럼 {len(columns_to_drop)}개 제거 완료: {columns_to_drop}")
 
         # 2. 규칙 기반 보간 수행
-        df_cleaned = rule_based_imputation(df_cleaned)
+        df_cleaned = rule_based_imputation(df_cleaned, data_source)
         logger.info(f"  → 규칙 기반 보간 완료")
 
     else: df_cleaned = df.copy()
@@ -237,7 +136,12 @@ def clean_and_prepare_data(df, data_source):
 
     # 5. cat_cols
     final_cols = data_df.columns.tolist()
-    cat_cols = [col for col in categorical_cols if col in data_df.columns]
+    valid_range = VALID_RANGE.get(data_source, {})
+
+    cat_cols = [
+        col for col, meta in valid_range.items()
+        if meta.get("type") == "cat"
+    ]
 
     logger.info(f"  → 최종 Imputation 대상 컬럼 수: {len(final_cols)}")
     logger.info(f"  → 최종 Imputation 대상 행 수: {len(data_df)}")

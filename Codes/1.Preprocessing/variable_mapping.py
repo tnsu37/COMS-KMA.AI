@@ -4,6 +4,7 @@
 - 퀄리티 플래그 원본명 -> 퀄리티 플래그 API 변수명
 - 퀄리티 플래그 처리 규칙 (클라이언트 요청: "기존" 로직 기준)
 """
+import numpy as np
 
 # 1. NC 파일 변수 경로 -> API 변수명 매핑
 # (제공해주신 'nc 파일 변수 경로' 테이블 기준)
@@ -282,6 +283,93 @@ DQF_RULES = {
     'QPN': { 'rule_type': 'NONE' },
     'CI': { 'rule_type': 'NONE' },
     'CLD': { 'rule_type': 'NONE' }
+}
+
+
+# 4. valid range registry
+# source별로 구분하여 최종 VALID_RANGE에 저장
+# 현재는 GK2A만 포함되었으며, 공식 문서에 제공된 valid range로 작성됨
+# 현재 사용되지 않은 변수들은 주석처리
+
+VALID_RANGE_GK2A = {
+        'cld': {'type': 'cat', 'values': [0,1,2]},
+        'ctps_cp': {'type': 'cat', 'values': [0,1,2,6]},
+        'ctps_cth': {'type': 'con', 'values': [0,1700]},
+        'ctps_ctp': {'type': 'con', 'values': [0,120000]},
+        'ctps_ctt': {'type': 'con', 'values': [0,35000]},
+        'cla_type': {'type': 'cat', 'values': [1,2,3,4,5,6,7,8,9]},
+        'cla_cloud_fraction': {'type': 'con', 'values': [0,100]},
+        'dcoew_radius': {'type': 'con', 'values': [2,90]},
+        'dcoew_thickness': {'type': 'con', 'values': [1,160]},
+        'dcoew_liquid_path': {'type': 'con', 'values': [25,1000]},
+        'ncot': {'type': 'con', 'values': [-np.inf, np.inf]},
+        #'ci_ci1': {'type': '', 'values': []},
+        'ci_ci1_ccm': {'type': 'cat', 'values': [0,1,2,3,4]},
+        #'ci_ci1_obj': {'type': '', 'values': []},
+        #'ci_ci1_prob': {'type': 'cat', 'values': [0,1,2,3,4]},
+        'ci_ci2': {'type': 'con', 'values': [-np.inf, np.inf]},
+        #'ci_ci2_obj': {'type': '', 'values': []},
+        #'fog': {'type': 'cat', 'values': [1,2,3,4,5,6,7]},
+        'rr': {'type': 'con', 'values': [0,100]},
+        'qpn_rate': {'type': 'con', 'values': [0,300]},
+        #'qpn_probability': {'type': 'con', 'values': [0,100]},
+        #'tqprof_q': {'type': 'con', 'values': [0,100]},
+        #'tqprof_t': {'type': 'con', 'values': [180,320]},
+        'tpw_low': {'type': 'con', 'values': [0, np.inf]},
+        'tpw_mid': {'type': 'con', 'values': [0, np.inf]},
+        'tpw_high': {'type': 'con', 'values': [0, np.inf]},
+        'tpw': {'type': 'con', 'values': [0, 100]},
+        #'aii_cape': {'type': 'con', 'values': [0,5000]},
+        #'aii_ki': {'type': 'con', 'values': [0,40]},
+        #'aii_li': {'type': '', 'values': []},
+        #'aii_si': {'type': '', 'values': []},
+        'aii_tti': {'type': 'con', 'values': [-43,56]},
+        #'apps_aep': {'type': 'con', 'values': [-0.5,3]},
+        #'apps_aod': {'type': 'con', 'values': [0,5]},
+        #'apps_daod055': {'type': 'con', 'values': [0,5]},
+        #'apps_daod11': {'type': 'con', 'values': [0,5]},
+        #'lst': {'type': 'con', 'values': [213,330]},
+        #'sal_bsa': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b01': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b02': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b03': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b04': {'type': 'con', 'values': [0,10000]},
+        #'sal_bsa_b06': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b01': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b02': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b03': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b04': {'type': 'con', 'values': [0,10000]},
+        #'sal_wsa_b06': {'type': 'con', 'values': [0,10000]},
+        #'vgt_ndvi': {'type': 'con', 'values': [0,1]},
+        #'vgt_evi': {'type': 'con', 'values': [0,1]},
+        'swrad_downward': {'type': 'con', 'values': [0, np.inf]},
+        'swrad_absorbed': {'type': 'con', 'values': [0, np.inf]},
+        #'lwrad_downward': {'type': '', 'values': []},
+        #'lwrad_upward': {'type': '', 'values': []},
+        'st_lon': {'type': 'con', 'values': [-np.inf, np.inf]},
+        'st_lat': {'type': 'con', 'values': [-np.inf, np.inf]},
+        'ctps_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
+        'cla_type_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
+        'cla_cloud_fraction_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5]},
+        'dcoew_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
+        'ncot_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
+        'rr_raining_ct_flag': {'type': 'con', 'values': [1,20]},
+        'qpn_dqf1': {'type': 'cat', 'values': [-1,0,1]},
+        'tpw_dqf1': {'type': 'cat', 'values': [0,1,2]},
+        'tpw_dqf2': {'type': 'cat', 'values': [0,1]},
+        'aii_dqf1': {'type': 'cat', 'values': [0,1,2,3]},
+        'aii_dqf2': {'type': 'cat', 'values': [0,1]},
+        'swrad_downward_dqf': {'type': 'cat', 'values': [0,1]},
+        'swrad_absorbed_dqf': {'type': 'cat', 'values': [0,1]},
+        'swrad_dqf1': {'type': 'cat', 'values': [0,1]}
+}
+
+VALID_RANGE = {
+    'GK2A': VALID_RANGE_GK2A,
+    'ODAM': {},
+    'GEMS': {},
+    'AIRKOREA': {}
 }
 
 

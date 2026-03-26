@@ -28,8 +28,8 @@ import numpy as np
 import gc
 import logging
 import traceback
-#from missingpy import MissForest
 from variable_mapping import get_daily_fill_columns
+from variable_mapping import VALID_RANGE
 
 # pandas 경고 무시
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
@@ -94,92 +94,6 @@ FIXED_MEANS = {
     "ncot": 5.019284345219368,
 }
 
-VALID_RANGE_GK2A = {
-        'st_lon': {'type': 'con', 'values': [-np.inf, np.inf]},
-        'st_lat': {'type': 'con', 'values': [-np.inf, np.inf]},
-        'year': {'type': 'con', 'values': [2020, 2100]},
-        'month': {'type': 'con', 'values': [1,12]},
-        'day': {'type': 'con', 'values': [1,31]},
-        'hour': {'type': 'con', 'values': [0,23]},
-        'cld': {'type': 'cat', 'values': [0,1,2]},
-        'ctps_cp': {'type': 'cat', 'values': [0,1,2,6]},
-        'ctps_cth': {'type': 'con', 'values': [0,1700]},
-        'ctps_ctp': {'type': 'con', 'values': [0,120000]},
-        'ctps_ctt': {'type': 'con', 'values': [0,35000]},
-        'cla_type': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8,9]},
-        'cla_cloud_fraction': {'type': 'con', 'values': [0,100]},
-        'dcoew_radius': {'type': 'con', 'values': [2,90]},
-        'dcoew_thickness': {'type': 'con', 'values': [1,160]},
-        'dcoew_liquid_path': {'type': 'con', 'values': [25,1000]},
-        'ncot': {'type': 'con', 'values': [-np.inf, np.inf]},
-        #'ci_ci1': {'type': '', 'values': []},
-        'ci_ci1_ccm': {'type': 'cat', 'values': [0,1,2,3,4,9]},
-        #'ci_ci1_obj': {'type': '', 'values': []},
-        #'ci_ci1_prob': {'type': 'cat', 'values': [0,1,2,3,4]},
-        'ci_ci2': {'type': 'con', 'values': [-np.inf, np.inf]},
-        #'ci_ci2_obj': {'type': '', 'values': []},
-        #'fog': {'type': 'cat', 'values': [1,2,3,4,5,6,7]},
-        'rr': {'type': 'con', 'values': [0,100]},
-        'qpn_rate': {'type': 'con', 'values': [0,300]},
-        #'qpn_probability': {'type': 'con', 'values': [0,100]},
-        #'tqprof_q': {'type': 'con', 'values': [0,100]},
-        #'tqprof_t': {'type': 'con', 'values': [180,320]},
-        'tpw_low': {'type': 'con', 'values': [0, np.inf]},
-        'tpw_mid': {'type': 'con', 'values': [0, np.inf]},
-        'tpw_high': {'type': 'con', 'values': [0, np.inf]},
-        'tpw': {'type': 'con', 'values': [0, 100]},
-        #'aii_cape': {'type': 'con', 'values': [0,5000]},
-        #'aii_ki': {'type': 'con', 'values': [0,40]},
-        #'aii_li': {'type': '', 'values': []},
-        #'aii_si': {'type': '', 'values': []},
-        'aii_tti': {'type': 'con', 'values': [-43,56]},
-        #'apps_aep': {'type': 'con', 'values': [-0.5,3]},
-        #'apps_aod': {'type': 'con', 'values': [0,5]},
-        #'apps_daod055': {'type': 'con', 'values': [0,5]},
-        #'apps_daod11': {'type': 'con', 'values': [0,5]},
-        #'lst': {'type': 'con', 'values': [213,330]},
-        #'sal_bsa': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b01': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b02': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b03': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b04': {'type': 'con', 'values': [0,10000]},
-        #'sal_bsa_b06': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b01': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b02': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b03': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b04': {'type': 'con', 'values': [0,10000]},
-        #'sal_wsa_b06': {'type': 'con', 'values': [0,10000]},
-        #'vgt_ndvi': {'type': 'con', 'values': [0,1]},
-        #'vgt_evi': {'type': 'con', 'values': [0,1]},
-        'swrad_downward': {'type': 'con', 'values': [0, np.inf]},
-        'swrad_absorbed': {'type': 'con', 'values': [0, np.inf]},
-        #'lwrad_downward': {'type': '', 'values': []},
-        #'lwrad_upward': {'type': '', 'values': []},
-        'ctps_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
-        'cla_type_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
-        'cla_cloud_fraction_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5]},
-        'dcoew_dqf1': {'type': 'cat', 'values': [0,1,2,3,4,5,6,7,8]},
-        'ncot_dqf': {'type': 'cat', 'values': [0,1,2,3,4,5,6]},
-        'rr_raining_ct_flag': {'type': 'con', 'values': [1,20]},
-        'qpn_dqf1': {'type': 'cat', 'values': [-1,0,1]},
-        'tpw_dqf1': {'type': 'cat', 'values': [0,1,2]},
-        'tpw_dqf2': {'type': 'cat', 'values': [0,1]},
-        'aii_dqf1': {'type': 'cat', 'values': [0,1,2,3]},
-        'aii_dqf2': {'type': 'cat', 'values': [0,1]},
-        'swrad_downward_dqf': {'type': 'cat', 'values': [0,1]},
-        'swrad_absorbed_dqf': {'type': 'cat', 'values': [0,1]},
-        'swrad_dqf1': {'type': 'cat', 'values': [0,1]}
-}
-
-GK2A_CATEGORICAL_COLS = [
-    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "cat"
-]
-
-GK2A_CONTINUOUS_COLS = [
-    col for col, info in VALID_RANGE_GK2A.items() if info["type"] == "con"
-]
-
 # --- 헬퍼 함수 ---
 
 SOURCE_DIR_MAP = {
@@ -188,8 +102,9 @@ SOURCE_DIR_MAP = {
     'GEMS': 'GEMS'
 }
 
-def apply_categorical_outlier_to_99(df):
-    for col, meta in VALID_RANGE_GK2A.items():
+def apply_categorical_outlier_to_99(data_source,df):
+    valid_range = VALID_RANGE.get(data_source, {})
+    for col, meta in valid_range.items():
         if meta.get("type") == "cat" and col in df.columns:
             valid_values = set(meta["values"])
             mask = (~df[col].isin(valid_values)) & (~df[col].isna())
@@ -246,14 +161,13 @@ def nearest_valid_category(x, valid_values):
         return np.nan
     return min(valid_values, key=lambda v: abs(v - x))
 
-def postprocess_imputed_df(df, data_source, valid_range):
+def postprocess_imputed_df(df, data_source):
     if df.empty:
         return df
 
     out = df.copy()
 
-    if data_source != "GK2A":
-        return out
+    valid_range = VALID_RANGE.get(data_source, {})
 
     # 범주형 → nearest valid
     for col, info in valid_range.items():
@@ -553,7 +467,6 @@ def main(args):
                 try:
                      current_imputer = joblib.load(imputer_filepath)
                      current_pivot_date = pivot_date
-                     valid_range = VALID_RANGE_GK2A if data_source == "GK2A" else {}
                      
                      logger.info(f"    → ✓ Pivot {pivot_date} Imputer 로드 완료.")
 
@@ -569,8 +482,7 @@ def main(args):
                 logger.error(f"  - ❌ {date_key} 데이터 로드 실패. 건너뜁니다.")
                 main_pbar.update(1); continue
             
-            if data_source == "GK2A":
-                day_df = rule_based_imputation(day_df)
+            day_df = rule_based_imputation(data_source, day_df)
 
             # --- [v9.2] SAL/VGT 00시 값 보간 (Imputation 전에 선행) ---
             # try:
@@ -648,7 +560,7 @@ def main(args):
             logger.info(f"      - key_df 컬럼: {len(key_df.columns)}개 ({list(key_df.columns)})")
             logger.info(f"      - imputed_df_data_part 컬럼: {len(imputed_df_data_part.columns)}개")
             final_imputed_df = pd.concat([key_df, imputed_df_data_part], axis=1)
-            final_imputed_df = postprocess_imputed_df(final_imputed_df, data_source, valid_range)
+            final_imputed_df = postprocess_imputed_df(final_imputed_df, data_source)
             logger.info(f"      - final_imputed_df 컬럼: {len(final_imputed_df.columns)}개")
             del key_df, imputed_df_data_part
             gc.collect()
