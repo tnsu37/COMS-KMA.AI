@@ -35,7 +35,8 @@ logger = setup_logger('MergeData')
 # 1. AIRKOREA: Merge 시 최종적으로 유지할 컬럼 목록
 AIRKOREA_FINAL_COLS = [
     'geoId', 'geo_lon', 'geo_lat', 'dateTime', 'mangName', 'stationName', 
-    'so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value'
+    'so2Value', 'coValue', 'o3Value', 'no2Value', 'pm10Value', 'pm25Value',
+    'year', 'month', 'day', 'hour'
 ]
 
 # 2. ODAM: Merge 시 최종적으로 제거할 컬럼 목록
@@ -60,7 +61,7 @@ GEMS_COLS_TO_DROP = [
 ]
 
 # Merge Key (모든 소스 공통)을 key로 사용할 것]
-MERGE_KEYS = ['geoId', 'geo_lon', 'geo_lat', 'dateTime', 'year', 'month', 'day']
+MERGE_KEYS = ['geoId', 'dateTime']
 
 def get_expected_periods(start_dt, end_dt, mode):
     """
@@ -110,16 +111,14 @@ def filter_existing_by_range(df, start_dt, end_dt, mode):
     if df is None or df.empty:
         return None
 
-    out = df.copy()
-
     if mode == "hourly":
-        mask = (out["dateTime"] >= start_dt) & (out["dateTime"] <= (end_dt + timedelta(days=1) - timedelta(seconds=1)))
-        out = out.loc[mask]
+        mask = (df["dateTime"] >= start_dt) & (df["dateTime"] <= (end_dt + timedelta(days=1) - timedelta(seconds=1)))
+        df = df.loc[mask]
     else:
-        mask = (out["date"] >= start_dt.date()) & (out["date"] <= end_dt.date())
-        out = out.loc[mask]
+        mask = (df["date"] >= start_dt.date()) & (df["date"] <= end_dt.date())
+        df = df.loc[mask]
 
-    return out
+    return df
 
 def get_existing_periods(df, mode):
     """
@@ -161,7 +160,7 @@ def build_master_df(source_dfs):
 
     for source, df in source_dfs.items():
         if master_df is None:
-            master_df = df.copy()
+            master_df = df
         else:
             existing_cols = set(master_df.columns)
             new_cols = set(df.columns)
@@ -185,7 +184,7 @@ def make_daily_output(master_df):
     if master_df is None or master_df.empty:
         return pd.DataFrame()
 
-    daily_df = master_df.copy()
+    daily_df = master_df
     daily_df["date_key"] = daily_df["dateTime"].dt.date
 
     group_keys = ['date_key', 'geoId']
@@ -244,7 +243,7 @@ def get_source_presence_periods(df, source, mode):
         return set()
 
     mask = df[value_cols].notna().any(axis=1)
-    period_series = get_period_series(df.loc[mask].copy(), mode)
+    period_series = get_period_series(df.loc[mask], mode)
     return set(period_series.dropna())
 
 def get_common_periods(df, mode, sources):
@@ -270,19 +269,18 @@ def get_common_periods(df, mode, sources):
 
 def filter_by_periods(df, periods, mode):
     if df is None or df.empty:
-        return df.copy()
+        return df
 
     if not periods:
-        return df.iloc[0:0].copy()
+        return df.iloc[0:0]
 
-    out = df.copy()
-    period_series = get_period_series(out, mode)
-    return out.loc[period_series.isin(periods)].copy()
+    period_series = get_period_series(df, mode)
+    return df.loc[period_series.isin(periods)]
 
 
 def filter_airkorea_rows(df):
     if df is None or df.empty:
-        return df.copy()
+        return df
 
     air_cols = [
         'stationName', 'mangName',
@@ -290,10 +288,10 @@ def filter_airkorea_rows(df):
         ]
     if not air_cols:
         logger.warning("⚠️ AIRKOREA 값 컬럼이 없습니다.")
-        return df.iloc[0:0].copy()
+        return df.iloc[0:0]
 
     mask = df[air_cols].notna().any(axis=1)
-    return df.loc[mask].copy()
+    return df.loc[mask]
 
 def one_hot_encode(df, data_source, exclude_keys=None):
     """
@@ -432,10 +430,10 @@ def load_source_data_parallel(input_dir, source, start_dt, end_dt, source_dirs=N
     if target_periods is not None:
         if mode == "hourly":
             target_periods = set(pd.to_datetime(list(target_periods)))
-            combined_df = combined_df[combined_df['dateTime'].dt.floor("h").isin(target_periods)].copy()
+            combined_df = combined_df[combined_df['dateTime'].dt.floor("h").isin(target_periods)]
         elif mode == "daily":
             target_periods = set(target_periods)
-            combined_df = combined_df[combined_df['dateTime'].dt.date.isin(target_periods)].copy()
+            combined_df = combined_df[combined_df['dateTime'].dt.date.isin(target_periods)]
         
     logger.info(f"  → {source}: 최종 {len(combined_df)}개 레코드 준비 완료.")
     return combined_df
@@ -549,7 +547,7 @@ def main_merge():
                 logger.info(f"  → 신규 Master DataFrame 생성 완료. (총 {len(master_df)}행, {len(master_df.columns)}열)")
 
                 if args.mode == 'hourly':
-                    newly_built_output = master_df.copy()
+                    newly_built_output = master_df
                 elif args.mode == 'daily':
                     newly_built_output = make_daily_output(master_df)
                 else:
@@ -560,9 +558,9 @@ def main_merge():
         if newly_built_output is not None and not newly_built_output.empty:
             final_output_df = pd.concat([existing_df, newly_built_output], ignore_index=True)
         else:
-            final_output_df = existing_df.copy()
+            final_output_df = existing_df
     else:
-        final_output_df = newly_built_output.copy() if newly_built_output is not None else pd.DataFrame()
+        final_output_df = newly_built_output if newly_built_output is not None else pd.DataFrame()
 
     if final_output_df is None or final_output_df.empty:
         logger.error("❌ 최종 결과가 비어 있습니다.")
@@ -594,7 +592,7 @@ def main_merge():
     # input file의 name을 변경할 필요가 있음. 규칙 적용 필요.
     if args.input_file:
         os.makedirs(os.path.dirname(args.input_file), exist_ok=True)
-        save_df = final_output_df.copy()
+        save_df = final_output_df
 
         if args.mode == "hourly" and "dateTime" in save_df.columns:
             save_df["dateTime"] = pd.to_datetime(save_df["dateTime"]).dt.strftime('%Y-%m-%d %H:%M:%S')
@@ -610,7 +608,7 @@ def main_merge():
 
     # 1) 전체 outer merge
     if "outer_all" in args.save_types:
-        save_targets["outer_all"] = final_output_df.copy()
+        save_targets["outer_all"] = final_output_df
 
     # 공통 기준 source
     common_sources = [s for s in ["ODAM", "GK2A", "AIRKOREA"] if s in args.sources]
@@ -620,7 +618,7 @@ def main_merge():
         common_df = filter_by_periods(final_output_df, common_periods, args.mode)
 
         if "common_period" in args.save_types:
-            save_targets["common_period"] = common_df.copy()
+            save_targets["common_period"] = common_df
 
         if "common_period_airkorea_only" in args.save_types:
             save_targets["common_period_airkorea_only"] = filter_airkorea_rows(common_df)
@@ -636,7 +634,7 @@ def main_merge():
         output_filename = f"FIN_{save_type}_{args.mode}_{args.start_date}_{args.end_date}.csv"
         output_path = os.path.join(args.output_dir, output_filename)
 
-        save_out = save_df.copy()
+        save_out = save_df
 
         if args.mode == "hourly" and "dateTime" in save_out.columns:
             save_out["dateTime"] = pd.to_datetime(save_out["dateTime"], errors="coerce").dt.strftime("%Y-%m-%d %H:%M:%S")
