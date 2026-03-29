@@ -23,7 +23,7 @@ def setup_logger(name):
     
     if not logger.handlers:
         ch = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s | %(levelname)-8s | %(message)s', datefmt='%Y-m-%d %H:%M:%S')
+        formatter = logging.Formatter('%(asctime)s | %(levelname)-8s | %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
         ch.setFormatter(formatter)
         logger.addHandler(ch)
     return logger
@@ -69,9 +69,9 @@ def get_expected_periods(start_dt, end_dt, mode):
     - daily: 일 단위 date
     """
     if mode == "hourly":
-        return pd.date_range(start=start_dt, end=end_dt + timedelta(days=1) - timedelta(hours=1), freq="H")
+        return pd.date_range(start=start_dt, end=end_dt + timedelta(days=1) - timedelta(hours=1), freq="h")
     elif mode == "daily":
-        return pd.date_range(start=start_dt.date(), end=end_dt.date(), freq="D").date
+        return pd.date_range(start=start_dt.date(), end=end_dt.date(), freq="d").date
     else:
         raise ValueError(f"지원하지 않는 mode: {mode}")
     
@@ -129,7 +129,7 @@ def get_existing_periods(df, mode):
         return set()
 
     if mode == "hourly":
-        return set(pd.to_datetime(df["dateTime"]).dt.floor("H"))
+        return set(pd.to_datetime(df["dateTime"]).dt.floor("h"))
     else:
         return set(pd.to_datetime(df["date"]).dt.date)
     
@@ -206,7 +206,7 @@ def make_daily_output(master_df):
 
 def get_period_series(df, mode):
     if mode == "hourly":
-        return pd.to_datetime(df["dateTime"], errors="coerce").dt.floor("H")
+        return pd.to_datetime(df["dateTime"], errors="coerce").dt.floor("h")
     elif mode == "daily":
         if "date" in df.columns:
             return pd.to_datetime(df["date"], errors="coerce").dt.date
@@ -432,7 +432,7 @@ def load_source_data_parallel(input_dir, source, start_dt, end_dt, source_dirs=N
     if target_periods is not None:
         if mode == "hourly":
             target_periods = set(pd.to_datetime(list(target_periods)))
-            combined_df = combined_df[combined_df['dateTime'].dt.floor("H").isin(target_periods)].copy()
+            combined_df = combined_df[combined_df['dateTime'].dt.floor("h").isin(target_periods)].copy()
         elif mode == "daily":
             target_periods = set(target_periods)
             combined_df = combined_df[combined_df['dateTime'].dt.date.isin(target_periods)].copy()
